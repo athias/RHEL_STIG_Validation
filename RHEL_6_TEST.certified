@@ -1,0 +1,863 @@
+################################################################################
+# STIG TEST File for the Red Hat 6 STIG - Version 1, Release 10 (for Marc)
+# 
+# Important items of note:
+#	There are several Keywords utilized by the script - these keywords only
+#	apply to the first column ($1) and no other location
+#		#		A # by itself is skipped like a standard comment
+#		##		Anything starting with ## is considered a comment
+#		#STIG_VER	Establishes the STIG Version for logging output
+#		#STIG_ID	Starts the comments and logging
+#		#RULE_TITLE	Records all proceeding words for the test in the line that follows
+#		#END_OF_TESTS	closes the logging and ends the script
+#		(Blank Line)	Blank lines are ignored as comments
+#
+# Column Parsing for STIG_VER Reporting - Must be placed before #STIG_ID
+#	Column	Variable	Description
+#	------	--------	-----------
+# 	1	STIG_ID		Starter Line for Revision denotation
+#	2	STIG_VER	STIG Version used
+#	3	STIG_REV	STIG Revision used
+#	4	STIG_DAY	Day of STIG version used
+#	5	STIG_MON	Month of STIG version used
+#	6	STIG_YEAR	Year of STIG version used
+#	7+	STIG_NAME	Title of STIG used
+#
+# Column Parsing for STIG evaluation potion
+#	Column	Variable	Description
+#	------	--------	-----------
+# 	1	STIG_ID		The STIG ID number
+#	2	VULN_ID		The Vulnerability ID number (VULID)
+#	3	VUL_CAT		Vulnerability Category
+#	4	EVAL_VALUE	The Evaluation Value
+# 				no_value means the EVAL_TEST will result in no value
+# 				Anything else means the EVAL_TEST will result in that specific value
+# 				Please ensure there are no spaces in this value
+#	5	EVAL_T_PF	Does the check PASS or FAIL If the EVAL_TEST ends up true
+#	6	EVAL_F_PF	Does the check PASS or FAIL if the EVAL_TEST ends up false
+#	7+	EVAL_TEST	Everything remaining for the command to be run
+# 				This can have spaces, as well as if statements with command created variable
+#
+################################################################################
+#
+# Testing Area below here:
+# 	To test a particular check, place it between the STIG_ID and END_OF_TESTS
+# 	lines below.  Once the checks have been placed there, remove the space
+# 	between the # and STIG_VER, STIG_ID, and END_OF_TESTS parse commands.
+#
+# 	SPECIAL NOTE	Please do not forget to put the spaces back after you
+# 			have completed your testing
+#
+################################################################################
+
+# STIG_VER	1	10	22	Jan	2016	Red Hat Enterprise Linux 6 Security Technical Implementation Guide
+# STIG_ID	VULN_ID	VUL_CAT	EVAL_VALUE	TRUE	FALSE	EVAL_TEST
+
+# Stuff goes here
+
+# END_OF_TESTS
+
+################################################################################
+# Below here is the real start of the Evaluation File
+################################################################################
+
+#STIG_VER	1	10	22	Jan	2016	Red Hat Enterprise Linux 6 Security Technical Implementation Guide
+#STIG_ID	VULN_ID	VUL_CAT	EVAL_VALUE	TRUE	FALSE	EVAL_TEST
+
+#RULE_TITLE The system must use a separate file system for /tmp.
+RHEL-06-000001	V-38455	III	no_value	FAIL	PASS	mount | grep "on /tmp "
+
+#RULE_TITLE The system must use a separate file system for /var.
+RHEL-06-000002	V-38456	III	no_value	FAIL	PASS	mount | grep "on /var "
+
+#RULE_TITLE The system must use a separate file system for /var/log.
+RHEL-06-000003	V-38463	III	no_value	FAIL	PASS	mount | grep "on /var/log "
+
+#RULE_TITLE The system must use a separate file system for /var/log/audit.
+RHEL-06-000004	V-38467	III	no_value	FAIL	PASS	mount | grep "on /var/log/audit "
+
+#RULE_TITLE The audit system must alert designed staff members when the audit storage volume approaches capacity.
+RHEL-06-000005	V-38470	II	no_value	FAIL	PASS	cat /etc/audit/auditd.conf | grep  -i "space_left_action = SYSLOG"
+
+#RULE_TITLE The system must use a separate file system for user home directories.
+RHEL-06-000007	V-38473	III	no_value	FAIL	PASS	mount | grep "on /home "
+
+#RULE_TITLE Vendor-provided cryptographic certificates must be installed to verify the integrity of system software.
+RHEL-06-000008	V-38476	I	no_value	FAIL	PASS	rpm -q gpg-pubkey | egrep "fd431d51-4ae0493b|2fa658e0-45700c69"	
+
+#RULE_TITLE The Red Hat Network Service (rhnsd) service must not be running, unless using RHN or an RHN Satellite.
+RHEL-06-000009	V-38478	III	no_value	PASS	FAIL	chkconfig --list | grep rhnsd | awk '{printf $2$3$4$5$6$7$8}' | egrep -v "0:off1:off2:off3:off4:off5:off6:off"
+
+#RULE_TITLE System security patches and updates must be installed and up-to-date.
+RHEL-06-000011	V-38481	II	no_value	PASS	FAIL	yum check-update 2>/dev/null | grep updates | egrep -v "Loaded plugins:|This system is receiving updates from RHN Classic or RHN Satellite."
+
+#RULE_TITLE The system package management tool must cryptographically verify the authenticity of system software packages during installation.
+RHEL-06-000013	V-38483	II	gpgcheck=1	PASS	FAIL	cat /etc/yum.conf | grep -i gpgcheck=1
+
+#RULE_TITLE The system package management tool must cryptographically verify the authenticity of all software packages during installation.
+RHEL-06-000015	V-38487	III	no_value	PASS	FAIL	cat /etc/yum.repos.d/* | grep gpgcheck=0
+
+#RULE_TITLE A file integrity tool must be installed.
+RHEL-06-000016	V-38489	II	no_value	PASS	FAIL	rpm -q aide | grep "is not installed"
+
+#RULE_TITLE The system must use a Linux Security Module at boot time.
+RHEL-06-000017	V-51337	II	no_value	PASS	FAIL	cat /etc/grub.conf | grep selinux=0
+
+#RULE_TITLE A file integrity baseline must be created.
+RHEL-06-000018	V-51391	II	success		PASS	FAIL	if [[ -f $(cat /etc/aide.conf | grep "@@define DBDIR" | awk '{printf $3}')/$(cat /etc/aide.conf | grep "database=file" | awk '{print substr($0,index($0,"/")+1)}') ]]; then echo success;fi
+
+#RULE_TITLE There must be no .rhosts or hosts.equiv files on the system.
+RHEL-06-000019	V-38491	I	failure		FAIL	PASS	if [[ -f /etc/hosts.equiv ]]; then echo failure; fi
+
+#RULE_TITLE The system must use a Linux Security Module configured to enforce limits on system services.
+RHEL-06-000020	V-51363	II	no_value	FAIL	PASS	cat /etc/selinux/config | grep -i "SELINUX=enforcing"
+
+#RULE_TITLE The system must use a Linux Security Module configured to limit the privileges of system services.
+RHEL-06-000023	V-51369	III	no_value	FAIL	PASS	cat /etc/selinux/config | grep -i "SELINUXTYPE=targeted"
+
+#RULE_TITLE All device files must be monitored by the system Linux Security Module.
+RHEL-06-000025	V-51379	III	no_value	PASS	FAIL	ls -RZ /dev | grep unlabeled_t
+
+#RULE_TITLE The system must prevent the root account from logging in from virtual consoles.
+RHEL-06-000027	V-38492	II	no_value	PASS	FAIL	grep '^vc/[0-9]' /etc/securetty
+
+#RULE_TITLE The system must prevent the root account from logging in from serial consoles.
+RHEL-06-000028	V-38494	III	no_value	PASS	FAIL	grep '^ttyS/[0-9]' /etc/securetty
+
+#RULE_TITLE Default operating system accounts, other than root, must be locked.
+RHEL-06-000029	V-38496	II	no_value	PASS	FAIL	awk -F: '$1 !~ /^root$/ && $2 !~ /^[!*]/ {print $1 ":" $2}' /etc/shadow | egrep -v 'admin_local'
+
+#RULE_TITLE The system must not have accounts configured with blank or null passwords.
+RHEL-06-000030	V-38497	I	no_value	PASS	FAIL	grep nullok /etc/pam.d/system-auth
+
+#RULE_TITLE The /etc/passwd file must not contain password hashes.
+RHEL-06-000031	V-38499	II	no_value	PASS	FAIL	awk -F: '($2 != "x") {print}' /etc/passwd
+
+#RULE_TITLE The root account must be the only account having a UID of 0.
+RHEL-06-000032	V-38500	II	no_value	PASS	FAIL	awk -F: '($3 == 0) {print}' /etc/passwd | egrep -v 'root:x:0:0:root'
+
+#RULE_TITLE The /etc/shadow file must be owned by root.
+RHEL-06-000033	V-38502	II	root		PASS	FAIL	ls -lL /etc/shadow | awk '{printf $3}'
+
+#RULE_TITLE The /etc/shadow file must be group-owned by root.
+RHEL-06-000034	V-38503	II	root		PASS	FAIL	ls -lL /etc/shadow | awk '{printf $4}'
+
+#RULE_TITLE The /etc/shadow file must have mode 0000.
+RHEL-06-000035	V-38504	II	no_value	PASS	FAIL	ls -lL /etc/shadow | awk '{printf $1}' | egrep -v '\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-'
+
+#RULE_TITLE The /etc/gshadow file must be owned by root.
+RHEL-06-000036	V-38443	II	root		PASS	FAIL	ls -lL /etc/gshadow | awk '{printf $3}'
+
+#RULE_TITLE The /etc/gshadow file must be group-owned by root.
+RHEL-06-000037	V-38448	II	root		PASS	FAIL	ls -lL /etc/gshadow | awk '{printf $4}'
+
+#RULE_TITLE The /etc/gshadow file must have mode 0000.
+RHEL-06-000038	V-38449	II	no_value	PASS	FAIL	ls -lL /etc/gshadow | awk '{printf $1}' | egrep -v '\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-'
+
+#RULE_TITLE The /etc/passwd file must be owned by root.
+RHEL-06-000039	V-38450	II	root		PASS	FAIL	ls -lL /etc/passwd | awk '{printf $3}'
+
+#RULE_TITLE The /etc/passwd file must be group-owned by root.
+RHEL-06-000040	V-38451	II	root		PASS	FAIL	ls -lL /etc/passwd | awk '{printf $4}'
+
+#RULE_TITLE The /etc/passwd file must have mode 0644 or less permissive.
+RHEL-06-000041	V-38457	II	no_value	PASS	FAIL	ls -lL /etc/passwd | awk '{printf $1}' | egrep -v '\\-rw\\-r\\-\\-r\\-\\-'
+
+#RULE_TITLE The /etc/group file must be owned by root.
+RHEL-06-000042	V-38458	II	root		PASS	FAIL	ls -lL /etc/group | awk '{printf $3}'
+
+#RULE_TITLE The /etc/group file must be group-owned by root.
+RHEL-06-000043	V-38459	II	root		PASS	FAIL	ls -lL /etc/group | awk '{printf $4}'
+
+#RULE_TITLE The /etc/group file must have mode 0644 or less permissive.
+RHEL-06-000044	V-38461	II	no_value	PASS	FAIL	ls -lL /etc/group | awk '{printf $1}' | egrep -v '\\-rw\\-r\\-\\-r\\-\\-'
+
+#RULE_TITLE Library files must have mode 0755 or less permissive.
+RHEL-06-000045	V-38465	II	no_value	PASS	FAIL	if [[ -z `find -L /lib -perm /022 -type f` ]] && [[ -z `find -L /lib64 -perm /022 -type f` ]] && [[ -z `find -L /usr/lib -perm /022 -type f` ]] && [[ -z `find -L /usr/lib64 -perm /022 -type f` ]];then :;else echo 'fail';fi
+
+#RULE_TITLE Library files must be owned by root.
+RHEL-06-000046	V-38466	II	no_value	PASS	FAIL	if [[ -z `find -L /lib \! -user root` ]] && [[ -z `find -L /lib64 \! -user root` ]] && [[ -z `find -L /usr/lib \! -user root` ]] && [[ -z `find -L /usr/lib64 \! -user root` ]] && [[ -z `find -L /usr/local/lib \! -user root` ]] && [[ -z `find -L /usr/local/lib64 \! -user root` ]];then :;else echo 'fail';fi
+
+#RULE_TITLE All system command files must have mode 755 or less permissive.
+RHEL-06-000047	V-38469	II	script		PASS	FAIL	pi=\"/bin /usr/bin /usr/local/bin /sbin /usr/sbin /usr/local/sbin\";for i in \$pi;do if [[ -n `find -L \$i -perm /022 -type f` ]];then printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed on \$i\\e[0m\\n\";fi;done
+
+#RULE_TITLE All system command files must be owned by root.
+RHEL-06-000048	V-38472	II	no_value	PASS	FAIL	if [[ -z `find -L /bin \! -user root` ]] && [[ -z `find -L /usr/bin \! -user root` ]] && [[ -z `find -L /usr/local/bin \! -user root` ]] && [[ -z `find -L /sbin \! -user root` ]] && [[ -z `find -L /usr/sbin \! -user root` ]] && [[ -z `find -L /usr/local/sbin \! -user root` ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must require passwords to contain a minimum of 15 characters.
+RHEL-06-000050	V-38475	II	15		PASS	FAIL	grep PASS_MIN_LEN /etc/login.defs | egrep -v '^#' | awk '{printf $2}'
+
+#RULE_TITLE Users must not be able to change passwords more than once every 24 hours.
+RHEL-06-000051	V-38477	II	1		PASS	FAIL	grep PASS_MIN_DAYS /etc/login.defs | egrep -v '^#' | awk '{printf $2}'
+
+#RULE_TITLE User passwords must be changed at least every 60 days.
+RHEL-06-000053	V-38479 II	60		PASS	FAIL	grep PASS_MAX_DAYS /etc/login.defs | egrep -v '^#' | awk '{printf $2}'
+
+#RULE_TITLE Users must be warned 7 days in advance of password expiration.
+RHEL-06-000054	V-38480	III	7		PASS	FAIL	grep PASS_WARN_AGE /etc/login.defs | egrep -v '^#' | awk '{printf $2}'
+
+#RULE_TITLE The system must require passwords to contain at least one numeric character.
+RHEL-06-000056	V-38482	III	no_value	FAIL	PASS	grep pam_cracklib /etc/pam.d/system-auth | egrep -v '^#' | grep 'dcredit\=\-1'
+
+#RULE_TITLE The system must require passwords to contain at least one uppercase alphabetic character.
+RHEL-06-000057	V-38569	III	no_value	FAIL	PASS	grep pam_cracklib /etc/pam.d/system-auth | egrep -v '^#' | grep 'ucredit\=\-1'
+
+#RULE_TITLE The system must require passwords to contain at least one special character.
+RHEL-06-000058	V-38570	III	no_value	FAIL	PASS	grep pam_cracklib /etc/pam.d/system-auth | egrep -v '^#' | grep 'ocredit\=\-1'
+
+#RULE_TITLE The system must require passwords to contain at least one lowercase alphabetic character.
+RHEL-06-000059	V-38571	III	no_value	FAIL	PASS	grep pam_cracklib /etc/pam.d/system-auth | egrep -v '^#' | grep 'lcredit\=\-1'
+
+#RULE_TITLE The system must require at least eight characters be changed between the old and new passwords during a password change.
+RHEL-06-000060	V-38572	III	no_value	FAIL	PASS	grep pam_cracklib /etc/pam.d/system-auth | egrep -v '^#' | grep 'difok\=8'
+
+#RULE_TITLE The system must disable accounts after three consecurive unsuccessful logon attempts.
+RHEL-06-000061	V-38573	II	no_value	PASS	FAIL	if [[ -z `grep pam_faillock /etc/pam.d/system-auth | egrep -v '^#' | grep '\\"deny=3\\"'` ]] && [[ -z `grep pam_faillock /etc/pam.d/password-auth | egrep -v '^#' | grep '\\"deny=3\\"'` ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (system-auth).
+RHEL-06-000062	V-48574	II	no_value	PASS	FAIL	for i in `ls -ld /etc/pam.d/* | grep -v '^d' | awk '{printf $9\"\\n\"}'`;do if [[ -n `grep password $i | grep pam_unix.so | egrep -v '^#'` ]];then if [[ -z `grep password $i | grep pam_unix.so | egrep -v '^#' | egrep -v 'sha512'` ]];then :;else echo 'fail';fi;else :;fi;done
+
+#RULE_TITLE The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating accound password hashes (login.defs).
+RHEL-06-000063	V-38576	II	SHA512		PASS	FAIL	grep ENCRYPT_METHOD /etc/login.defs | egrep -v '^#' | awk '{printf $2}'
+
+#RULE_TITLE The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (libuser.conf).
+RHEL-06-000064	V-38577	II	sha512		PASS	FAIL	grep crypt_style /etc/libuser.conf | egrep -v '^#' | awk '{printf $3}'
+
+#RULE_TITLE The system boot loader configuration file(s) must be owned by root.
+RHEL-06-000065	V-38579	II	root		PASS	FAIL	ls -lL /etc/grub.conf | awk '{printf $3}'
+
+#RULE_TITLE The system boot loader configuration file(s) must be group-owned by root.
+RHEL-06-000066	V-38581	II	root		PASS	FAIL	ls -lL /etc/grub.conf | awk '{printf $4}'
+
+#RULE_TITLE The system boot loader configuration file(s) must have mode 0600 or less permissive.
+RHEL-06-000067	V-38583	II	no_value	PASS	FAIL	ls -lL /etc/grub.conf | awk '{printf $1}' | egrep -v '\\-rw\\-\\-\\-\\-\\-\\-\\-'
+
+#RULE_TITLE The system boot loader must require authentication.
+RHEL-06-000068	V-38585	II	no_value	FAIL	PASS	cat /etc/grub.conf | grep 'password \\-\\-encrypted \\$6\\$' | egrep -v '^#'
+
+#RULE_TITLE The system must require authentication upon booting into single-user and maintenance modes.
+RHEL-06-000069	V-38586	II	no_value	FAIL	PASS	cat /etc/sysconfig/init | egrep -v '^#' | grep 'SINGLE\\=\\/sbin\\/sulogin'
+
+#RULE_TITLE The system must not permit interactive boot.
+RHEL-06-000070	V-38588	II	no_value	FAIL	PASS	cat /etc/sysconfig/init | egrep -v '^#' | grep 'PROMPT\\=no'
+
+#RULE_TITLE The system must allow locking of the console screen in text mode.
+RHEL-06-000071	V-38590	III	no_value	PASS	FAIL	rpm -q screen | grep 'is not installed'
+
+#RULE_TITLE The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, console login prompts.
+RHEL-06-000073	V-38593	II	no_value	PASS	FAIL	if [[ -z `cat /etc/issue | egrep 'You are accessing a U.S. Government \\(USG\\) Information System \\(IS\\) that is'` ]] || [[ -z `cat /etc/issue | egrep 'provided for USG-authorized use only. By using this IS \\(which includes'` ]] || [[ -z `cat /etc/issue | egrep 'any device attached to this IS\\), you consent to the following conditions:'` ]] || [[ -z `cat /etc/issue | egrep '\\-The USG routinely intercepts and monitors communications on this IS for'` ]] || [[ -z `cat /etc/issue | egrep 'purposes including, but not limited to, penetration testing, COMSEC'` ]] || [[ -z `cat /etc/issue | egrep 'monitoring, network operations and defense, personnel misconduct \\(PM\\),'` ]] || [[ -z `cat /etc/issue | egrep 'law enforcement \\(LE\\), and counterintelligence \\(CI\\) investigations.'` ]] || [[ -z `cat /etc/issue | egrep '\\-At any time, the USG may inspect and seize data stored on this IS.'` ]] || [[ -z `cat /etc/issue | egrep '\\-Communications using, or data stored on, this IS are not private, are'` ]] || [[ -z `cat /etc/issue | egrep 'subject to routine monitoring, interception, and search, and may be'` ]] || [[ -z `cat /etc/issue | egrep 'disclosed or used for any USG-authorized purpose.'` ]] || [[ -z `cat /etc/issue | egrep '\\-This IS includes security measures \\(e.g., authentication and access'` ]] || [[ -z `cat /etc/issue | egrep 'controls\\) to protect USG interests \\-\\- not for your personal benefit or'` ]] || [[ -z `cat /etc/issue | egrep 'privacy.'` ]] || [[ -z `cat /etc/issue | egrep '\\-Notwithstanding the above, using this IS does not constitute consent to'` ]] || [[ -z `cat /etc/issue | egrep 'PM, LE or CI investigative searching or monitoring of the content of'` ]] || [[ -z `cat /etc/issue | egrep 'privileged communications, or work product, related to personal'` ]] || [[ -z `cat /etc/issue | egrep 'representation or services by attorneys, psychotherapists, or clergy, and'` ]] || [[ -z `cat /etc/issue | egrep 'their assistants. Such communications and work product are private and'` ]] || [[ -z `cat /etc/issue | egrep 'confidential. See User Agreement for details.'` ]];then echo 'fail';fi
+
+#RULE_TITLE The system must implement virtual address space randomization.
+RHEL-06-000078	V-38596	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep kernel.randomize_va_space | awk '{printf $3}'` == 2 ]] && [[ `sysctl kernel.randomize_va_space | awk '{printf $3}'` == 2 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must limit the ability of processes to have simultaneous write and execute access to memory.
+RHEL-06-000079	V-38597	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep kernel.exec-shield | awk '{printf $3}'` == 1 ]] && [[ `sysctl kernel.exec-shield | awk '{printf $3}'` == 1 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not send ICMPv4 redirects by default.
+RHEL-06-000080	V-38600	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.default.send_redirects | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.default.send_redirects | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not send ICMPv4 redirects from any interface.
+RHEL-06-000081	V-38601	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.all.send_redirects | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.all.send_redirects | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE IP forwarding for IPv4 must not be enabled, unless the system is a router.
+RHEL-06-000082	V-38511	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.ip_forward | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.ip_forward | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not accept IPv4 source-routed packets on any interface.
+RHEL-06-000083	V-38523	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.all.accept_source_route | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.all.accept_source_route | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not accept ICMPv4 redirect packets on any interface.
+RHEL-06-000084	V-38524	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.all.accept_redirects | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.all.accept_redirects | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not accept ICMPv4 secure redirect packets on any interface.
+RHEL-06-000086	V-38526	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.all.secure_redirects | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.all.secure_redirects | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must log Martian packets.
+RHEL-06-000088	V-38528	III	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.all.log_martians | awk '{printf $3}'` == 1 ]] && [[ `sysctl net.ipv4.conf.all.log_martians | awk '{printf $3}'` == 1 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not accept IPv4 source-routed packets by default.
+RHEL-06-000089	V-38529	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.default.accept_source_route | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.default.accept_source_route | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not accept IPv4 source-routed packets by default.
+RHEL-06-000090	V-38532	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.default.secure_redirects | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.default.secure_redirects | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must ignore ICMPv4 redirect messages by default.
+RHEL-06-000091	V-38533	III	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.default.accept_redirects | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv4.conf.default.accept_redirects | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not respond to ICMPv4 sent to a broadcast address.
+RHEL-06-000092	V-38535	III	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.icmp_echo_ignore_broadcasts | awk '{printf $3}'` == 1 ]] && [[ `sysctl net.ipv4.icmp_echo_ignore_broadcasts | awk '{printf $3}'` == 1 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must not respond to ICMPv4 sent to a broadcast address.
+RHEL-06-000093	V-38537	III	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.icmp_ignore_bogus_error_responses | awk '{printf $3}'` == 1 ]] && [[ `sysctl net.ipv4.icmp_ignore_bogus_error_responses | awk '{printf $3}'` == 1 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must be configured to use TCP syncookies when experiencing a TCP SYN flood.
+RHEL-06-000095	V-38539	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.tcp_syncookies | awk '{printf $3}'` == 1 ]] && [[ `sysctl net.ipv4.tcp_syncookies | awk '{printf $3}'` == 1 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must use a reverse-path filter for IPv4 network traffic when possible on all interfaces.
+RHEL-06-000096	V-38542	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.all.rp_filter | awk '{printf $3}'` == 1 ]] && [[ `sysctl net.ipv4.conf.all.rp_filter | awk '{printf $3}'` == 1 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must use a reverse-path filter for IPv4 network traffic when possible by default.
+RHEL-06-000097	V-38544	II	no_value	PASS	FAIL	if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv4.conf.default.rp_filter | awk '{printf $3}'` == 1 ]] && [[ `sysctl net.ipv4.conf.default.rp_filter | awk '{printf $3}'` == 1 ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The IPv6 protocol handler must not be bound to the network stack unless needed.
+RHEL-06-000098	V-38546	II	no_value	PASS	FAIL	if [[ -z `grep -r 'options ipv6 disable\=1' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#'` ]];then echo 'FAIL';else :;fi
+
+#RULE_TITLE The system must ignore ICMPv6 redirects by default.
+RHEL-06-000099	V-38548	II	no_value	PASS	FAIL	if [[ -z `grep -r 'options ipv6 disable\=1' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#'` ]];then if [[ `cat /etc/sysctl.conf | egrep -v '^#' | grep net.ipv6.conf.default.accept_redirects | awk '{printf $3}'` == 0 ]] && [[ `sysctl net.ipv6.conf.default.accept_redirects 2>&1 | awk '{printf $3}'` == 0 ]];then :;else echo 'fail';fi;fi
+
+#RULE_TITLE The system must employ a local IPv6 firewall.
+RHEL-06-000103	V-38549	II	no_value	PASS	FAIL	if [[ -z `grep -r 'options ipv6 disable\=1' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#'` ]];then if [[ -n `service ip6tables status | egrep -v 'ip6tables: Firewall is not running.'` ]];then :;else echo 'fail';fi;fi
+
+#RULE_TITLE The operating system must connect to external networks or information systems only through managed IPv6 interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.
+RHEL-06-000106	V-38551	II	no_value	PASS	FAIL	if [[ -z `grep -r 'options ipv6 disable\=1' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#'` ]];then if [[ -n `service ip6tables status | egrep -v 'ip6tables: Firewall is not running.'` ]];then :;else echo 'fail';fi;fi
+
+#RULE_TITLE The operating system must prevent public IPv6 access into an organizations internal networks, except as appropriately mediated by managed interfaces employing boundary protection devices.
+RHEL-06-000107	V-38553	II	no_value	PASS	FAIL	if [[ -z `grep -r 'options ipv6 disable\=1' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#'` ]];then if [[ -n `service ip6tables status | egrep -v 'ip6tables: Firewall is not running.'` ]];then :;else echo 'fail';fi;fi
+
+#RULE_TITLE The system must employ a local IPv4 firewall.
+RHEL-06-000113	V-38555	II	no_value	PASS	FAIL	if [[ -z `service iptables status | egrep -v 'iptables: Firewall is not running.'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must connect to external networks or information systems only through managed IPv4 interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.
+RHEL-06-000116	V-38560	II	no_value	PASS	FAIL	if [[ -z `service iptables status | egrep -v 'iptables: Firewall is not running.'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must prevent public IPv4 access into an organizations internal networks, except as appropriately mediated by managed interfaces employing boundary protection devices.
+RHEL-06-000117	V-38512	II	no_value	PASS	FAIL	if [[ -z `service iptables status | egrep -v 'iptables: Firewall is not running.'` ]];then echo 'fail';fi
+
+#RULE_TITLE The systems local IPv4 firewall must implement a deny-all, allow-by-exception policy for inbound packets.
+RHEL-06-000120	V-38513	II	DROP		PASS	FAIL	grep ':INPUT' /etc/sysconfig/iptables | awk '{printf $2}'
+
+#RULE_TITLE The Datagram Congestion Control Protocol (DCCP) must be disabled unless required.
+RHEL-06-000124	V-38514	II	no_value	PASS	FAIL	if [[ -z `grep -r ' dccp ' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#' | egrep 'install dccp \/bin\/true|install dccp \/bin\/false'` ]];then echo 'fail';fi
+
+#RULE_TITLE The Stream Control Transmission Protocol (SCTP) must be disabled unless required.
+RHEL-06-000125	V-38515	II	no_value	PASS	FAIL	if [[ -z `grep -r ' sctp ' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#' | egrep 'install sctp \/bin\/true|install sctp \/bin\/false'` ]];then echo 'fail';fi
+
+#RULE_TITLE The Reliable Datagram Sockets (RDS) protocol must be disabled unless required.
+RHEL-06-000126	V-38516	III	no_value	PASS	FAIL	if [[ -z `grep -r ' rds ' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#' | egrep 'install rds \/bin\/true|install rds \/bin\/false'` ]];then echo 'fail';fi
+
+#RULE_TITLE The Transparent Inter-Process Communication (TIPC) protocol must be disabled unless required.
+RHEL-06-000127	V-38517	III	no_value	PASS	FAIL	if [[ -z `grep -r ' tipc ' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#' | egrep 'install tipc \/bin\/true|install tipc \/bin\/false'` ]];then echo 'fail';fi
+
+#RULE_TITLE All rsyslog-generated log files must be owned by root.
+RHEL-06-000133	V-38518	II	no_value	PASS	FAIL	pie=\"`cat /etc/rsyslog.conf | grep '/' | egrep -v '^#|IncludeConfig' | sed 's/.*\\///' | sed 's/\\;.*$//'`\";for i in \$pie;do if [[ \`ls -lL /var/log/\$i | awk '{printf \$3}'\` = 'root' ]];then :;else echo 'fail';fi;done
+
+#RULE_TITLE All rsyslog-generated log files must be group-owned by root.
+RHEL-06-000134	V-38519	II	no_value	PASS	FAIL	pie=\"`cat /etc/rsyslog.conf | grep '/' | egrep -v '^#|IncludeConfig' | sed 's/.*\\///' | sed 's/\\;.*$//'`\";for i in \$pie;do if [[ \`ls -lL /var/log/\$i | awk '{printf \$4}'\` = 'root' ]];then :;else echo 'fail';fi;done
+
+#RULE_TITLE All rsyslog-generated log files must have mode 0600 or less permissive.
+RHEL-06-000135	V-38623	II	no_value	PASS	FAIL	pie=\"`cat /etc/rsyslog.conf | grep '/' | egrep -v '^#|IncludeConfig' | sed 's/.*\\///' | sed 's/\\;.*$//'`\";for i in \$pie;do ls -lL /var/log/\$i | awk '{printf $1}' | egrep -v '\\-rw\\-\\-\\-\\-\\-\\-\\-.';done
+
+#RULE_TITLE The operating system must back up audit records on an organization defined frequency onto a different system or media than the system being audited.
+RHEL-06-000136	V-38520	II	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\";pi=\"`cat /etc/rsyslog.conf | egrep -v '^#|^$' | grep '\\*\\.\\*' | awk '{print $2}'`\";if [[ -n \`echo \$pi | egrep '\\@\\@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'\` ]];then pie\=\"`printf \$pi | sed 's/\@\@//'`\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tConfigured to send logs via TCP to \$pie\\e[0m\\n\";elif [[ -n \`echo \$pi | egrep '\\@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'\` ]];then pie\=\"`printf \$pi | sed 's/\@//'`\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tConfigured to send logs via UDP to \$pie\\e[0m\\n\";elif [[ -n \`echo \$pi | egrep ':omrelp:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'\` ]];then pie\=\"`printf \$pi | sed 's/\:omrelp\://'`\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tConfigured to send logs via RELP to \$pie\\e[0m\\n\";else printf \"\\e[0;31m\\t\\t\\t\\t\\t\\tNot Properly configured to send logs\\e[0m\\n\";fi
+
+#RULE_TITLE The operating system must support the requirement to centrally manage the content of audit records generated by organization defined information system components.
+RHEL-06-000137	V-38521	II	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\";pi=\"`cat /etc/rsyslog.conf | egrep -v '^#|^$' | grep '\\*\\.\\*' | awk '{print $2}'`\";if [[ -n \`echo \$pi | egrep '\\@\\@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'\` ]];then pie\=\"`printf \$pi | sed 's/\@\@//'`\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tConfigured to send logs via TCP to \$pie\\e[0m\\n\";elif [[ -n \`echo \$pi | egrep '\\@(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'\` ]];then pie\=\"`printf \$pi | sed 's/\@//'`\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tConfigured to send logs via UDP to \$pie\\e[0m\\n\";elif [[ -n \`echo \$pi | egrep ':omrelp:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'\` ]];then pie\=\"`printf \$pi | sed 's/\:omrelp\://'`\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tConfigured to send logs via RELP to \$pie\\e[0m\\n\";else printf \"\\e[0;31m\\t\\t\\t\\t\\t\\tNot Properly configured to send logs\\e[0m\\n\";fi
+
+#RULE_TITLE System logs must be rotated daily.
+RHEL-06-000138	V-38624	III	no_value	FAIL	PASS	grep logrotate /var/log/cron* | grep 'cron.daily'
+
+#RULE_TITLE The operating system must produce audit records containing sufficient information to establish the identity of any user/subject associated with the event.
+RHEL-06-000145	V-38628	II	no_value	PASS	FAIL	if [[ -z `service auditd status | grep ' is running...'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must employ automated mechanisms to facilitate the monitoring and control of remote access methods.
+RHEL-06-000148	V-38631	II	no_value	PASS	FAIL	if [[ -z `service auditd status | grep ' is running...'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must produce audit records containing sufficient information to establish what type of events occurred.
+RHEL-06-000154	V-38632	II	no_value	PASS	FAIL	if [[ -z `service auditd status | grep ' is running...'` ]];then echo 'fail';fi
+
+#RULE_TITLE The system must retain enough rotated audit logs to cover the required log retention period.
+RHEL-06-000159	V-38636	II	5		PASS	FAIL	cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'num_logs ' | awk '{printf $3}'
+
+#RULE_TITLE The system must set a maximum audit log file size.
+RHEL-06-000160	V-38633	II	50		PASS	FAIL	cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'max_log_file ' | awk '{printf $3}'
+
+#RULE_TITLE The system must rotate audit log files that reach the maximum file size.
+RHEL-06-000161	V-38634	II	no_value	PASS	FAIL	if [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'max_log_file_action ' | awk '{printf $3}'` == 'rotate' ]] || [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'max_log_file_action ' | awk '{printf $3}'` == 'ROTATE' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The audit system must switch the system to single-user mode when available audit storage volume becomes dangerously low.
+RHEL-06-000163	V-54381	II	no_value	PASS	FAIL	if [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'admin_space_left_action ' | awk '{printf $3}'` == 'single' ]] || [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'admin_space_left_action ' | awk '{printf $3}'` == 'SINGLE' ]] || [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'admin_space_left_action ' | awk '{printf $3}'` == 'suspend' ]] || [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'admin_space_left_action ' | awk '{printf $3}'` == 'SUSPEND' ]] || [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'admin_space_left_action ' | awk '{printf $3}'` == 'halt' ]] || [[ `cat /etc/audit/auditd.conf | egrep -v '^#' | grep 'admin_space_left_action ' | awk '{printf $3}'` == 'HALT' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The audit system must be configured to audit all attempts to alter system time through adjtimex.
+RHEL-06-000165	V-38635	III	no_value	PASS	FAIL	if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S adjtimex' | grep '\\-a always,exit' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'adjtimex' | grep '\\-a always,exit' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;else if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S adjtimex' | grep '\\-a always,exit' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'adjtimex' | grep '\\-a always,exit' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all attempts to alter system time through settimeofday.
+RHEL-06-000167	V-38522	III	no_value	PASS	FAIL	if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S settimeofday' | grep '\\-a always,exit' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'settimeofday' | grep '\\-a always,exit' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;else if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S settimeofday' | grep '\\-a always,exit' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'settimeofday' | grep '\\-a always,exit' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all attempts to alter system time through stime.
+RHEL-06-000169	V-38525	III	no_value	PASS	FAIL	if [[ -z `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S stime' | grep '\\-a always,exit' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'stime' | grep '\\-a always,exit' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all attempts to alter system time through settimeofday.
+RHEL-06-000171	V-38527	III	no_value	PASS	FAIL	if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S clock_settime' | grep '\\-a always,exit' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'clock_settime' | grep '\\-a always,exit' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;else if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S clock_settime' | grep '\\-a always,exit' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'clock_settime' | grep '\\-a always,exit' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all attempts to alter system time through /etc/localtime.
+RHEL-06-000173	V-38530	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-w /etc/localtime' | grep '\\-p wa'` ]] || [[ -z `auditctl -l | grep '\\-w /etc/localtime' | grep '\\-p wa'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must automatically audit account creation.
+RHEL-06-000174	V-38531	III	no_value	PASS	FAIL	pie=\"/etc/passwd /etc/shadow /etc/group /etc/gshadow /etc/security/opasswd\";for i in \$pie;do if [[ -z \`cat /etc/audit/audit.rules | egrep -v '#' | grep \"\\-w \$i\" | grep '\\-p wa'\` ]] || [[ -z \`auditctl \-l | grep \"\\-w \$i\" | grep '\\-p wa'\` ]];then echo 'fail';fi;done
+
+#RULE_TITLE The operating system must automatically audit account modification.
+RHEL-06-000175	V-38534	III	no_value	PASS	FAIL	pie=\"/etc/passwd /etc/shadow /etc/group /etc/gshadow /etc/security/opasswd\";for i in \$pie;do if [[ -z \`cat /etc/audit/audit.rules | egrep -v '#' | grep \"\\-w \$i\" | grep '\\-p wa'\` ]] || [[ -z \`auditctl \-l | grep \"\\-w \$i\" | grep '\\-p wa'\` ]];then echo 'fail';fi;done
+
+#RULE_TITLE The operating system must automatically audit account disabling actions.
+RHEL-06-000176	V-38536	III	no_value	PASS	FAIL	pie=\"/etc/passwd /etc/shadow /etc/group /etc/gshadow /etc/security/opasswd\";for i in \$pie;do if [[ -z \`cat /etc/audit/audit.rules | egrep -v '#' | grep \"\\-w \$i\" | grep '\\-p wa'\` ]] || [[ -z \`auditctl \-l | grep \"\\-w \$i\" | grep '\\-p wa'\` ]];then echo 'fail';fi;done
+
+#RULE_TITLE The operating system must automatically audit account termination.
+RHEL-06-000177	V-38538	III	no_value	PASS	FAIL	pie=\"/etc/passwd /etc/shadow /etc/group /etc/gshadow /etc/security/opasswd\";for i in \$pie;do if [[ -z \`cat /etc/audit/audit.rules | egrep -v '#' | grep \"\\-w \$i\" | grep '\\-p wa'\` ]] || [[ -z \`auditctl \-l | grep \"\\-w \$i\" | grep '\\-p wa'\` ]];then echo 'fail';fi;done
+
+#RULE_TITLE The audit system must be configured to audit modifications to the systems network configuration.
+RHEL-06-000182	V-38540	III	no_value	PASS	FAIL	pie=\"/etc/issue /etc/issue.net /etc/hosts /etc/sysconfig/network\";pi=\"sethostname setdomainname\";for i in \$pie;do if [[ -z \`cat /etc/audit/audit.rules | egrep -v '#' | grep \"\\-w \$i\" | grep '\\-p wa'\` ]] || [[ -z \`auditctl \-l | grep \"\\-w \$i\" | grep '\\-p wa'\` ]];then echo 'fail';fi;done; for i in \$pi;do if [[ -n \`uname -r | egrep \".x86_64\$\"\` ]];then if [[ -z \`cat /etc/audit/audit.rules | egrep -v '#' | grep \"\\-S \$i\" | grep '\\-a always,exit' | grep '\\-F arch=b64'\` ]] || [[ -z \`auditctl -l | grep \"\$i\" | grep '\\-a always,exit' | grep '\\-F arch=x86_64'\` ]];then echo 'fail';fi;else if [[ -z \`cat /etc/audit/audit.rules | egrep -v '#' | grep \"\\-S \$i\" | grep '\\-a always,exit' | grep '\\-F arch=b32'\` ]] || [[ -z \`auditctl -l | grep \"\$i\" | grep '\\-a always,exit' | grep '\\-F arch=i386'\` ]];then echo 'fail';fi;fi;done	
+
+#RULE_TITLE The audit system must be configured to audit all attempts to alter system time through /etc/localtime.
+RHEL-06-000183	V-38541	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-w /etc/selinux' | grep '\\-p wa'` ]] || [[ -z `auditctl -l | grep '\\-w /etc/selinux' | grep '\\-p wa'` ]];then echo 'fail';fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using chmod.
+RHEL-06-000184	V-38543	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'chmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'chmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'chmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'chmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using chown.
+RHEL-06-000185	V-38545	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'chown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'chown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S chown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'chown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'chown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using fchmod.
+RHEL-06-000186	V-38547	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'fchmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'fchmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'fchmod' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'fchmod' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using fchmodat.
+RHEL-06-000187	V-38550	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmodat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmodat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'fchmodat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'fchmodat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmodat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchmodat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'fchmodat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'fchmodat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using fchown.
+RHEL-06-000188	V-38552	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'fchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'fchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'fchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'fchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using fchownat.
+RHEL-06-000189	V-38554	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchownat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchownat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'fchownat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'fchownat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchownat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fchownat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'fchownat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'fchownat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using fremovexattr.
+RHEL-06-000190	V-38556	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'fremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using fsetxattr.
+RHEL-06-000191	V-38557	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'fsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using lchown.
+RHEL-06-000192	V-38558	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'lchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'lchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'lchown' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'lchown' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using lremovexattr.
+RHEL-06-000193	V-38559	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'lremovexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using lsetxattr.
+RHEL-06-000194	V-38561	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'lsetxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using removexattr.
+RHEL-06-000195	V-38563	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S removexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S removexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'removexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'removexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S removexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S removexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'removexattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'removexattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all discretionary access control permission modifications using setxattr.
+RHEL-06-000196	V-38565	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S setxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S setxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'setxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'setxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S setxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S setxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'setxattr' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'setxattr' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit failed attempts to access files and programs.
+RHEL-06-000197	V-38566	III	no_value	PASS	FAIL	if [[ -n `uname -r | egrep \".x86_64\$\"` ]]; then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EACCES' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EACCES' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EPERM' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EPERM' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'EACCES' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'EACCES' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'EPERM' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'EPERM' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;else if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EACCES' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EACCES' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EPERM' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep 'exit\\=\\-EPERM' | grep '\\-S creat' | grep '\\-S open ' | grep '\\-S openat' | grep '\\-S open_by_handle_at' | grep '\\-S truncate' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'EACCES' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'EACCES' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'EPERM' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'EPERM' | grep '\\-S open,truncate,creat,openat,open_by_handle_at' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit all use of setuid and setgid programs.
+RHEL-06-000198	V-38567	III	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\";pie=\"`df -l | egrep -v 'Filesystem' | grep '%' | sed 's/.*%\ //'`\";pi=\"`for i in \$pie;do find \$i -xdev -type f -perm /6000 2>/dev/null;done`\";for i in \$pi;do if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep \"path\\=\$i\" | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295'` ]] || [[ -z `auditctl -l | grep \"path\\=\$i\" | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1'` ]];then printf \"\\e[0;31m\\t\\t\\t\\t\\t\\tFailed on \\e[0;33m\$i\\e[0m\\n\";fi;done;printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tNo further items identified\\e[0m\\n\";
+
+#RULE_TITLE The audit system must be configured to audit successful file system mounts.
+RHEL-06-000199	V-38568	III	no_value	PASS	FAIL	if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S mount' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S mount' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'mount' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'mount' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;else if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S mount' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S mount' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'mount' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'mount' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit user deletions of files and programs.
+RHEL-06-000200	V-38575	III	no_value	PASS	FAIL	if [[ -n `uname -r | egrep \".x86_64\$\"` ]]; then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rmdir' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rmdir' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'rmdir' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'rmdir' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlink ' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlink ' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'unlink[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'unlink[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlinkat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlinkat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'unlinkat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'unlinkat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rename ' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rename ' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'rename[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'rename[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S renameat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S renameat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'renameat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=x86_64'` ]] || [[ -z `auditctl -l | grep 'renameat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;else if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rmdir' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rmdir' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'rmdir' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'rmdir' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlink ' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlink ' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'unlink[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'unlink[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlinkat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S unlinkat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'unlinkat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'unlinkat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rename ' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S rename ' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'rename[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'rename[,|\\ ]' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S renameat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=4294967295' | grep '\\-F arch=b32'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S renameat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'renameat' | grep '\\-a always,exit' | grep '\\-F auid>\\=500 \\-F auid!\\=\\-1' | grep '\\-F arch=i386'` ]] || [[ -z `auditctl -l | grep 'renameat' | grep '\\-a always,exit' | grep '\\-F auid\\=0' | grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The audit system must be configured to audit changes to the /etc/sudoers file.
+RHEL-06-000201	V-38578	III	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '/etc/sudoers' | grep '\\-p wa \\-k actions'` ]] || [[ -z `auditctl -l | grep '/etc/sudoers' | grep '\\-p wa \\-k actions'` ]];then echo 'fail';fi
+
+#RULE_TITLE The audit system must be configured to audit the loading and unloading of dynamic kernel modules.
+RHEL-06-000202	V-38580	II	no_value	PASS	FAIL	if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '/sbin/insmod' | grep '\\-p x \\-k modules'` ]] || [[ -z `auditctl -l | grep '/sbin/insmod' | grep '\\-p x \\-k modules'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '/sbin/rmmod' | grep '\\-p x \\-k modules'` ]] || [[ -z `auditctl -l | grep '/sbin/rmmod' | grep '\\-p x \\-k modules'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '/sbin/modprobe' | grep '\\-p x \\-k modules'` ]] || [[ -z `auditctl -l | grep '/sbin/modprobe' | grep '\\-p x \\-k modules'` ]];then echo 'fail';fi;if [[ -n `uname -r | egrep \".x86_64\$\"` ]];then if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S init_module ' | grep '\\-a always,exit'| grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'init_module[,|\\ ]' |  grep '\\-a always,exit'| grep '\\-F arch=x86_64'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S delete_module' | grep '\\-a always,exit'| grep '\\-F arch=b64'` ]] || [[ -z `auditctl -l | grep 'delete_module[,|\\ ]' |  grep '\\-a always,exit'| grep '\\-F arch=x86_64'` ]];then echo 'fail';fi;else if [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S init_module ' | grep '\\-a always,exit'| grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'init_module[,|\\ ]' |  grep '\\-a always,exit'| grep '\\-F arch=i386'` ]] || [[ -z `cat /etc/audit/audit.rules | egrep -v '#' | grep '\\-S delete_module' | grep '\\-a always,exit'| grep '\\-F arch=b32'` ]] || [[ -z `auditctl -l | grep 'delete_module[,|\\ ]' |  grep '\\-a always,exit'| grep '\\-F arch=i386'` ]];then echo 'fail';fi;fi
+
+#RULE_TITLE The xinetd service must be disabled if no network services utilizing it are enabled.
+RHEL-06-000203	V-38582	II	no_value	PASS	FAIL	if [[ -z `service xinetd status 2>/dev/null` ]];then :;elif [[ `service xinetd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'xinetd' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The xinetd service must be uninstalled if no network services utilizing it are enabled.
+RHEL-06-000204	V-38584	III	no_value	PASS	FAIL	if [[ `rpm -q xinetd` == 'package xinetd is not installed' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The telnet-server package must not be installed.
+RHEL-06-000206	V-38587	I	no_value	PASS	FAIL	if [[ `rpm -q telnet-server` == 'package telnet-server is not installed' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The telnet daemon must not be running.
+RHEL-06-000211	V-38589	I	no_value	PASS	FAIL	if [[ -z `service telnetd status 2>/dev/null` ]];then :;elif [[ `service telnetd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'telnet' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The rsh-server package must not be installed.
+RHEL-06-000213	V-38591	I	no_value	PASS	FAIL	if [[ `rpm -q rsh-server` == 'package rsh-server is not installed' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The rshd service must not be running.
+RHEL-06-000214	V-38594	I	no_value	PASS	FAIL	if [[ -z `service rshd status 2>/dev/null` ]];then :;elif [[ `service rshd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'rsh' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The rexecd service must not be running.
+RHEL-06-000216	V-38598	I	no_value	PASS	FAIL	if [[ -z `service rexecd status 2>/dev/null` ]];then :;elif [[ `service rexecd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'rexec' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The rlogind service must not be running.
+RHEL-06-000218	V-38602	I	no_value	PASS	FAIL	if [[ -z `service rlogind status 2>/dev/null` ]];then :;elif [[ `service rlogind status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'rlogin' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The ypserv package must not be installed.
+RHEL-06-000220	V-38603	II	no_value	PASS	FAIL	if [[ `rpm -q ypserv` == 'package ypserv is not installed' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The ypbind service must not be running.
+RHEL-06-000221	V-38604	II	no_value	PASS	FAIL	if [[ -z `service ypbind status 2>/dev/null` ]];then :;elif [[ `service ypbind status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'ypbind' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The tftp-server package must not be installed unless required.
+RHEL-06-000222	V-38606	II	no_value	PASS	FAIL	if [[ `rpm -q tftp-server` == 'package tftp-server is not installed' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The TFTP service must not be running.
+RHEL-06-000223	V-38609	II	no_value	PASS	FAIL	if [[ -n `chkconfig --list | grep 'tftp' | awk '{printf $2$3$4$5$6$7$8}' | egrep -v '0:off1:off2:off3:off4:off5:off6:off'` ]];then echo 'fail';fi
+
+#RULE_TITLE The cron service must be running.
+RHEL-06-000224	V-38605	II	no_value	PASS	FAIL	if [[ -z `service crond status 2>/dev/null | grep 'crond' | grep 'is running...'` ]];then echo 'fail';fi
+
+#RULE_TITLE The SSH daemon must be configured to use only the SSHv2 protocol.
+RHEL-06-000227	V-38607	I	2		PASS	FAIL	grep 'Protocol' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must set a timeout interval on idle sessions.
+RHEL-06-000230	V-38608	III	900		PASS	FAIL	grep 'ClientAliveInterval' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must set a timeout count on idle sessions.
+RHEL-06-000231	V-38610	III	0		PASS	FAIL	grep 'ClientAliveCountMax' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must ignore .rhosts files.
+RHEL-06-000234	V-38611	II	yes		PASS	FAIL	grep 'IgnoreRhosts' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must not allow host-based authentication.
+RHEL-06-000236	V-38612	II	no		PASS	FAIL	grep 'HostbasedAuthentication' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The system must not permit root logins using remote access programs such as ssh.
+RHEL-06-000237	V-38613	II	no		PASS	FAIL	grep 'PermitRootLogin' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must not allow authentication using an empty password.
+RHEL-06-000239	V-38614	I	no		PASS	FAIL	grep 'PermitEmptyPasswords' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must be configured with the Department of Defense (DoD) login banner.
+RHEL-06-000240	V-38615	II	/etc/issue	PASS	FAIL	grep 'Banner' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must not permit user environment settings.
+RHEL-06-000241	V-38616	III	no		PASS	FAIL	grep 'PermitUserEnvironment' /etc/ssh/sshd_config | egrep -v '#' | awk '{printf $2}'
+
+#RULE_TITLE The SSH daemon must be configured to use only FIPS 140-2 approved ciphers.
+RHEL-06-000243	V-38617	II	no_value	PASS	FAIL	if [[ -z `cat /etc/ssh/sshd_config | egrep -v '#' | grep 'aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc'` ]];then echo 'fail';fi
+
+#RULE_TITLE The avahi service must be disabled.
+RHEL-06-000246	V-38618	III	no_value	PASS	FAIL	if [[ -z `service avahi-daemon status 2>/dev/null` ]];then :;elif [[ `service avahi-daemon status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'avahi-daemon' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The system clock must be synchronized continuously, or at least daily.
+RHEL-06-000247	V-38620	II	no_value	PASS	FAIL	if [[ -z `service ntpd status 2>/dev/null | grep 'ntpd' | grep 'is running...'` ]];then echo 'fail';fi
+
+#RULE_TITLE The system clock must be synchronized to an authoritative DoD time source.
+RHEL-06-000248	V-38567	III	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\";if [[ -z `cat /etc/ntp.conf | egrep -v '#' | grep 'server'` ]];then :;else printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tNTP Server Configurations:\\n\";cat /etc/ntp.conf | egrep -v '#' | grep 'server' | sed 's/server/\\t\\t\\t\\t\\t\\t\\tserver/';printf \"\\e[0m\";fi
+
+#RULE_TITLE Mail relaying must be restricted.
+RHEL-06-000249	V-38622	II	localhost	PASS	FAIL	cat /etc/postfix/main.cf | egrep -v '#' | grep inet_interfaces | awk '{printf $3}'
+
+#RULE_TITLE If the system is using LDAP for authentication or account information, the system must use a TLS connection using FIPS 140-2 approved cryptographic algorithms.
+RHEL-06-000252	V-38625	II	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\";if [[ -n `cat /etc/nsswitch.conf | egrep -v '^#' | grep ldap` ]];then if [[ -n `cat /etc/pam_ldap.conf | egrep -v '^#' | grep 'ssl start_tls'` ]];then printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tLDAP is utilized - \\e[0;32mConfigured to require TLS\\e[0m\\n\";else printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tLDAP is utilized - \\e[0;31mNot configured to require TLS\\e[0m\\n\";fi;fi;if [[ -n `cat /etc/nsswitch.conf | egrep -v '^#' | grep sss` ]];then if [[ -n `cat /etc/sssd/sssd.conf | egrep -v '^#' | grep ldap_id_use_start_tls | grep -i true` ]];then printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tSSSD is utilized - \\e[0;32mConfigured to require TLS\\e[0m\\n\";else printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tSSSD is utilized - \\e[0;31mNot configured to require TLS\\e[0m\\n\";fi;fi
+
+#RULE_TITLE The LDAP client must use a TLS connection using trust certificates signed by the site CA.
+RHEL-06-000253	V-38626	II	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\n\\e[0m\"
+
+#RULE_TITLE The openldap-servers package must not be installed unless required.
+RHEL-06-000256	V-38627	III	no_value	PASS	FAIL	if [[ `rpm -q openldap-servers` == 'package openldap-servers is not installed' ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The graphical desktop environment must set the idle timeout to no more than 15 minutes.
+RHEL-06-000257	V-38629	II	15		PASS	FAIL	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/idle_delay
+
+#RULE_TITLE The graphical desktop environment must automatically lock after 15 minutes of inactivity and the system must require user reauthentication to unlock the environment.
+RHEL-06-000258	V-38630	II	true		PASS	FAIL	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/idle_activation_enabled
+
+#RULE_TITLE The graphical desktop environment must have automatic lock enabled.
+RHEL-06-000259	V-38638	II	true		PASS	FAIL	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/lock_enabled
+
+#RULE_TITLE The system must display a publicly-viewable pattern during a graphical desktop environment session lock.
+RHEL-06-000260	V-38639	III	blank-only	PASS	FAIL	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/mode
+
+#RULE_TITLE The Automatic Bug Reporting Tool (abrtd) service must not be running.
+RHEL-06-000261	V-38640	III	no_value	PASS	FAIL	if [[ -z `service abrtd status 2>/dev/null` ]];then :;elif [[ `service abrtd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'abrtd' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The atd service must be disabled.
+RHEL-06-000262	V-38641	III	no_value	PASS	FAIL	if [[ -z `service atd status 2>/dev/null` ]];then :;elif [[ `service atd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'atd ' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The ntpdate service must not be running.
+RHEL-06-000265	V-38644	III	no_value	PASS	FAIL	if [[ -z `service ntpdate status 2>/dev/null` ]];then if [[ -n `chkconfig --list | grep 'ntpdate ' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The oddjobd service must not be running.
+RHEL-06-000266	V-38646	III	no_value	PASS	FAIL	if [[ -z `service oddjobd status 2>/dev/null` ]];then :;elif [[ `service oddjobd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'oddjobd ' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The qpidd service must not be running.
+RHEL-06-000267	V-38648	III	no_value	PASS	FAIL	if [[ -z `service qpidd status 2>/dev/null` ]];then :;elif [[ `service qpidd status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'qpidd ' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The rdisc service must not be running.
+RHEL-06-000268	V-38650	III	no_value	PASS	FAIL	if [[ -z `service rdisc status 2>/dev/null` ]];then :;elif [[ `service rdisc status 2>/dev/null | awk '{printf $2$3}'` == 'isstopped' ]];then if [[ -n `chkconfig --list | grep 'rdisc ' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE Remote file systems must be mounted with the nodev option.
+RHEL-06-000269	V-38652	II	no_value	PASS	FAIL	mount | grep 'nfs ' | egrep -v 'nodev'
+
+#RULE_TITLE Remote file systems must be mounted with the nosuid option.
+RHEL-06-000270	V-38654	II	no_value	PASS	FAIL	mount | grep 'nfs ' | egrep -v 'nosuid'
+
+#RULE_TITLE The noexec option must be added to removable media partitions.
+RHEL-06-000271	V-38655	II	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\"
+
+#RULE_TITLE The system must use SMB client signing for connecting to samba servers using smbclient.
+RHEL-06-000272	V-38656	III	mandatory	PASS	FAIL	if [[ -f /etc/samba/smb.conf ]];then cat /etc/samba/smb.conf | egrep -v '#' | grep 'client signing' | awk '{printf $4}';else echo 'fail';fi
+
+#RULE_TITLE The system must use SMB client signing for connecting to samba servers using mount.cifs.
+RHEL-06-000273	V-38657	III	no_value	PASS	FAIL	mount -v | grep -E 'smbfs |cifs '
+
+#RULE_TITLE The system must prohibit the reuse of passwords within five iterations.
+RHEL-06-000274	V-38658	II	no_value	PASS	FAIL	if [[ -z `cat /etc/pam.d/system-auth | egrep -v '#' | grep 'remember\=5' | grep 'password' | grep 'sufficient' | grep 'pam_unix.so'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must employ cryptographic mechanisms to protect information in storage.
+RHEL-06-000275	V-38659	III	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThis is not a finding if data encryption is not a requirement\\n\\e[0m\"
+
+#RULE_TITLE The operating system must protect the confidentiality and integrity of data at rest.
+RHEL-06-000276	V-38661	III	script		PASS	FAIL	printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThis is not a finding if data encryption is not required\\n\\e[0m\"
+
+#RULE_TITLE The operating system must employ cryptographic mechanisms to prevent unauthorized discolosure of data at rest unless otherwise protected by alternative physical measures.
+RHEL-06-000277	V-38662	III	script		PASS	FAIL	printf \"\\e[0;36m\\t\\t\\t\\t\\t\\tThis Check Requires Manual Review\\e[0m\\n\";printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThis is not a finding if data encryption is not a requirement\\n\\e[0m\"
+
+#RULE_TITLE The system package management tool must verify permissions on all files and directories associated with the audit package.
+RHEL-06-000278	V-38663	II	no_value	PASS	FAIL	rpm -V audit 2>/dev/null | grep '^.M'
+
+#RULE_TITLE The system package management tool must verify ownership on all files and directories associated with the audit package.
+RHEL-06-000279	V-38664	II	no_value	PASS	FAIL	rpm -V audit 2>/dev/null | grep '^.....U'
+
+#RULE_TITLE The system package management tool must verify group-ownership on all files and directories associated with the audit package.
+RHEL-06-000280	V-38665	II	no_value	PASS	FAIL	rpm -V audit 2>/dev/null | grep '^.....G'
+
+#RULE_TITLE The system package management tool must verify contents of all files associated with the audit package.
+RHEL-06-000281	V-38637	II	no_value	PASS	FAIL	rpm -V audit 2>/dev/null | awk '$1 ~ /..5/ && $2 != "c"'
+
+#RULE_TITLE There must be no world-writable files on the system.
+RHEL-06-000282	V-38643	II	script		PASS	FAIL	pie=\"`df -l | egrep -v 'Filesystem' | grep '%' | sed 's/.*%\ //'`\";pi=\"`for i in \$pie;do find \$i -xdev -type f -perm -002 2>/dev/null | grep -Ev '^/selinux/' | grep -Ev '^/proc/' | grep -Ev '^/sys/';done`\";for i in \$pi;do printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed on \$i\\e[0m\\n\";done
+
+#RULE_TITLE The system must use and update a DoD-approved virus scan program.
+RHEL-06-000284	V-38666	I	script		PASS	FAIL	printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThis needs to be configured\\n\\e[0m\"
+
+#RULE_TITLE The system must have a host-based intrusion detection tool installed.
+RHEL-06-000285	V-38667	II	script		PASS	FAIL	printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThe STIG basically says this passes\\n\\e[0m\"
+
+#RULE_TITLE The x86 Ctrl-Alt-Delete key sequence must be disabled.
+RHEL-06-000286	V-38668	I	no_value	PASS	FAIL	if [[ -f /etc/init/control-alt-delete.override ]];then if [[ -z `cat /etc/init/control-alt-delete.override | egrep -v '#' | grep 'exec /usr/bin/logger -p security.info \"Ctrl-Alt-Delete pressed\"'` ]];then echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE The postfix service must be enabled for mail delivery.
+RHEL-06-000287	V-38669	III	no_value	PASS	FAIL	if [[ -z `service postfix status | grep 'is running...'` ]];then echo 'fail';fi
+
+#RULE_TITLE The sendmail package must be removed.
+RHEL-06-000288	V-38671	II	no_value	PASS	FAIL	if [[ -z `rpm -q sendmail | grep 'is not installed'` ]];then echo 'fail';fi
+
+#RULE_TITLE The netconsole service must be disabled unless required.
+RHEL-06-000289	V-38672	III	no_value	PASS	FAIL	if [[ -z `service netconsole status 2>/dev/null` ]];then :;elif [[ `service netconsole status 2>/dev/null | awk '{printf $2$3$4}'` == 'modulenotloaded' ]];then if [[ -n `chkconfig --list | grep 'netconsole' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then :;else echo 'fail';fi;else echo 'fail';fi
+
+#RULE_TITLE X Windows must not be enabled unless required.
+RHEL-06-000290	V-38674	II	3		PASS	FAIL	cat /etc/inittab | egrep -v '#' | grep 'initdefault' | awk -F : '{printf $2}'
+
+#RULE_TITLE The xorg-x11-server-common (X Windows) package must not be installed, unless required.
+RHEL-06-000291	V-38676	III	script		PASS	FAIL	if [[ -n `rpm -qi xorg-x11-server-common | egrep -v 'is not installed'` ]];then printf  \"\\e[0;33m\\t\\t\\t\\t\\t\\tPlease Verify the X-Windows Package is Required\\e[0m\\n\";fi
+
+#RULE_TITLE The DHCP client must be disabled if not needed.
+RHEL-06-000292	V-38679	II	script		PASS	FAIL	pi=`ls -l /etc/sysconfig/network-scripts/ifcfg-* | egrep -v 'ifcfg-lo' | awk '{printf $9\"\\n\"}'`;for i in \$pi;do if [[ -z `cat \$i | grep -E 'BOOTPROTO=none|BOOTPROTO=\"none\"|BOOTPROTO=static|BOOTPROTO=\"static\"'` ]];then printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed on \$i\\e[0m\\n\";fi;done
+
+#RULE_TITLE All GIDs referenced in /etc/passwd must be defined in /etc/group
+RHEL-06-000294	V-38681	III	no_value	PASS	FAIL	pwck -r | grep 'no group'
+
+#RULE_TITLE All accounts on the system must have unique user or account names
+RHEL-06-000296	V-38683	III	no_value	PASS	FAIL	pwck -rq
+
+#RULE_TITLE Temporary accounts must be provisioned with an expiration date.
+RHEL-06-000297	V-38685	III	script		PASS	FAIL	printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThis needs to be manually reviewed\\e[0m\\n\"
+
+#RULE_TITLE Emergency accounts must be provisioned with an expiration date.
+RHEL-06-000298	V-38690	III	script		PASS	FAIL	printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThis needs to be manually reviewed\\e[0m\\n\"
+
+#RULE_TITLE The system must require passwords to contain no more than three consecutive repeating characters.
+RHEL-06-000299	V-38693	III	no_value	PASS	FAIL	if [[ -z `cat /etc/pam.d/system-auth | egrep -v '#' | grep 'maxrepeat\=3' | grep 'password' | egrep 'required|requisite' | grep 'pam_cracklib.so'` ]];then echo 'fail';fi
+
+#RULE_TITLE A file integrity tool must be used at least weekly to check for unauthorized file changes, particularly the addition of unauthorized system libraries or binaries, or for unauthorized modification to authorized system libraries or binaries.
+RHEL-06-000302	V-38695	II	no_value	PASS	FAIL	if [[ -z `grep aide /etc/crontab /etc/cron.*/* /var/spool/cron/root | egrep -v '#' | grep 'root' | grep '/usr/sbin/aide' | grep '\\-\\-check'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must employ automated mechanisms, per organization defined frequency, to detect the addition of unauthorized components/devices into the operating system.
+RHEL-06-000303	V-38696	II	no_value	PASS	FAIL	if [[ -z `grep aide /etc/crontab /etc/cron.*/* /var/spool/cron/root | egrep -v '#' | grep 'root' | grep '/usr/sbin/aide' | grep '\\-\\-check'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must employ automated mechanisms to detect the presence of unauthorized software on organizational information systems and notify designated organizational officials in accordance with the organization defined frequency.
+RHEL-06-000304	V-38698	II	no_value	PASS	FAIL	if [[ -z `grep aide /etc/crontab /etc/cron.*/* /var/spool/cron/root | egrep -v '#' | grep 'root' | grep '/usr/sbin/aide' | grep '\\-\\-check'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must provide a near real-time alert when any of the organization defined list of compromise or potential compromise indicators occurs. 
+RHEL-06-000305	V-38700	II	no_value	PASS	FAIL	if [[ -z `grep aide /etc/crontab /etc/cron.*/* /var/spool/cron/root | egrep -v '#' | grep 'root' | grep '/usr/sbin/aide' | grep '\\-\\-check'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must detect unauthorized changes to software and information.
+RHEL-06-000306	V-38670	II	no_value	PASS	FAIL	if [[ -z `grep aide /etc/crontab /etc/cron.*/* /var/spool/cron/root | egrep -v '#' | grep 'root' | grep '/usr/sbin/aide' | grep '\\-\\-check'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must ensure unauthorized, security-relevant configuration changes detected are tracked.
+RHEL-06-000307	V-38673	II	no_value	PASS	FAIL	if [[ -z `grep aide /etc/crontab /etc/cron.*/* /var/spool/cron/root | egrep -v '#' | grep 'root' | grep '/usr/sbin/aide' | grep '\\-\\-check'` ]];then echo 'fail';fi
+
+#RULE_TITLE Process core dumps must be disabled unless needed.
+RHEL-06-000308	V-38675 III	0		PASS	FAIL	cat /etc/security/limits.d/*.conf /etc/security/limits.conf | egrep -v ^# | grep 'core' | awk '{print $4}'
+
+#RULE_TITLE The NFS server must not have the insecure file locking option enabled.
+RHEL-06-000309	V-38677	I	no_value	PASS	FAIL	grep insecure_locks /etc/exports
+
+#RULE_TITLE The audit system must provide a warning when allocated audit record storage volume reaches a documented percentage of maximum audit record storage capacity.
+RHEL-06-000311	V-38678	II	200		PASS	FAIL	cat /etc/audit/auditd.conf | egrep -v ^# | egrep '^space_left ' | awk '{print $3}'
+
+#RULE_TITLE The audit system must identify staff members to receive notifications of audit log storage volume capacity issues.
+RHEL-06-000313	V-38680	II	root		PASS	FAIL	cat /etc/audit/auditd.conf | egrep -v ^# | egrep '^action_mail_acct '| awk '{print $3}'
+
+#RULE_TITLE If Bluetooth functionality must be disabled, preventing the kernel from loading the kernel module provides an additional safeguard against its activation.
+RHEL-06-000315	V-38682	II	script		PASS	FAIL	if [[ -z `cat /etc/modprobe.d/* | egrep -v ^# | grep 'bluetooth' | awk '{print $3}' | egrep '/bin/true|/bin/false'` ]];then if [[ -z `cat /etc/modprobe.d/* | egrep -v ^# | grep 'net-pf-31' | awk '{print $3}' | egrep '/bin/true|/bin/false'` ]];then printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed: bluetooth is enabled\\e[0m\\n\\e[0;33m\\t\\t\\t\\t\\t\\tFailed: net\-pf\-31 is enabled\\e[0m\\n\";else printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed: bluetooth is enabled\\e[0m\\n\";fi;elif [[ -z `cat /etc/modprobe.d/* | egrep -v ^# | grep 'net-pf-31' | awk '{print $3}' | egrep '/bin/true|/bin/false'` ]];then printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed: net\-pf\-31 is enabled\\e[0m\\n\";fi
+
+#RULE_TITLE The system must limit users to 10 simultaneous system logins, or a site-defined number, in accordance with operational requirements.
+RHEL-06-000319	V-38684	III	10		PASS	FAIL	cat /etc/security/limits.d/*.conf /etc/security/limits.conf | egrep -v ^# | grep 'maxlogins' | awk '{print $4}'
+
+#RULE_TITLE The systems local firewall must implement a deny-all, allow-by-exception policy for forwarded packets.
+RHEL-06-000320	V-38686	II	no_value	PASS	FAIL	if [[ `grep ":FORWARD" /etc/sysconfig/iptables` == ":FORWARD DROP [0:0]" ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The system must provide VPN connectivity for communications over untrusted networks.
+RHEL-06-000321	V-38687	III	script		PASS	FAIL	if [[ `rpm -q openswan` == "package openswan is not installed" ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mThe openswan package is installed, please verify a VPN is not required!\\e[0m\\n\";else rpm -q openswan | egrep -v ^openswan;fi
+
+#RULE_TITLE A login banner must be displayed immediately prior to, or as part of, graphical desktop environment login prompts.
+RHEL-06-000324	V-38688	II	true		PASS	FAIL	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_enable
+
+#RULE_TITLE The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, graphical desktop environment login prompts.
+RHEL-06-000326	V-38689	II	no_value	PASS	FAIL	if [[ -z `gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text | egrep -v '\\"' | grep 'You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:'` ]] || [[ -z `gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text | egrep -v '\\"' | grep '\\-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.'` ]] || [[ -z `gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text | egrep -v '\\"' | grep '\\-At any time, the USG may inspect and seize data stored on this IS.'` ]] || [[ -z `gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text | egrep -v '\\"' | grep '\\-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.'` ]] || [[ -z `gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text | egrep -v '\\"' | grep '\\-This IS includes security measures (e.g., authentication and access controls) to protect USG interests \\-\\- not for your personal benefit or privacy.'` ]] || [[ -z `gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text | egrep -v '\\"' | grep '\\-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.'` ]];then echo 'fail';else :;fi
+
+#RULE_TITLE The Bluetooth service must be disabled.
+RHEL-06-000331	V-38691	II	no_value	PASS	FAIL	chkconfig --list | grep bluetooth | awk '{printf $2$3$4$5$6$7$8}' | egrep -v "0:off1:off2:off3:off4:off5:off6:off"
+
+#RULE_TITLE Accounts must be locked upon 35 days of inactivity.
+RHEL-06-000334	V-38692	III	no_value	PASS	FAIL	if [[ `cat /etc/default/useradd | egrep '^INACTIVE=35'` == "INACTIVE=35" ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The operating system must manage information system identifiers for users and devices by disabling the user identifier after an organization defined time period of inactivity.
+RHEL-06-000335	V-38694	III	no_value	PASS	FAIL	if [[ `cat /etc/default/useradd | egrep '^INACTIVE=35'` == "INACTIVE=35" ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The sticky bit must be set on all public directories.
+RHEL-06-000336	V-38697	III	script		PASS	FAIL	pie=\"`df -l | egrep -v 'Filesystem' | grep '%' | sed 's/.*%\ //'`\";pi=\"`for i in \$pie;do find \$i -xdev -type d -perm -002 \! -perm -1000 2>/dev/null;done`\";if [[ -n \$pi ]];then for i in \$pi;do printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed on \$i\\e[0m\\n\";done;fi
+
+#RULE_TITLE All public directories must be owned by a system account.
+RHEL-06-000337	V-38699	III	script		PASS	FAIL	pie=\"`df -l | egrep -v 'Filesystem' | grep '%' | sed 's/.*%\ //'`\";pi=\"`for i in \$pie;do find \$i -xdev -type d -perm -0002 -uid +499 -print 2>/dev/null;done`\";if [[ -n \$pi ]];then for i in \$pi;do printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed on \$i\\e[0m\\n\";done;fi
+
+#RULE_TITLE The TFTP daemon must operate in secure mode which provides access only to a single directory on the host file system.
+RHEL-06-000338	V-38701	I	script		PASS	FAIL	if [[ `rpm -q tftp` == "package tftp is not installed" ]];then :;elif [[ -f /etc/xinetd.d/tftp ]];then if [[ `cat /etc/xinetd.d/tftp | egrep -v ^# | grep '^server_args'` == "server_args = -s /var/lib/tftpboot" ]];then :;else printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mThe tftp package is installed, please remove it!\\e[0m\\n\";fi;fi
+
+#RULE_TITLE The FTP daemon must be configured for logging or verbose mode.
+RHEL-06-000339	V-38702	III	script		PASS	FAIL	if [[ `rpm -q vsftpd` == "package vsftpd is not installed" ]];then :;else printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mThe vsftpd package is installed, please remove it!\\e[0m\\n\";fi
+
+#RULE_TITLE The snmpd service must use only SNMP protocol version 3 or newer.
+RHEL-06-000340	V-38660	II	no_value	PASS	FAIL	grep 'v1\\|v2c\\|com2sec' /etc/snmp/snmpd.conf | grep -v '^#'
+
+#RULE_TITLE The snmpd service must not use a default password.
+RHEL-06-000341	V-38653	I	no_value	PASS	FAIL	grep -v "^#" /etc/snmp/snmpd.conf| grep public
+
+#RULE_TITLE The system default umask for the bash shell must be 077.
+RHEL-06-000342	V-38651	III	no_value	PASS	FAIL	cat /etc/bashrc | egrep -v ^# | egrep 'umask [0-9]' | egrep -v 'umask 077'
+
+#RULE_TITLE The system default umask for the csh shell must be 077.
+RHEL-06-000343	V-38649	III	no_value	PASS	FAIL	cat /etc/csh.cshrc | egrep -v ^# | egrep 'umask [0-9]' | egrep -v 'umask 077'
+
+#RULE_TITLE The system default umask in /etc/profile must be 077.
+RHEL-06-000344	V-38647	III	no_value	PASS	FAIL	cat /etc/profile | egrep -v ^# | egrep 'umask [0-9]' | egrep -v 'umask 077'
+
+#RULE_TITLE The system default umask in /etc/login.defs must be 077.
+RHEL-06-000345	V-38645	III	no_value	PASS	FAIL	cat /etc/login.defs | egrep -v ^# | egrep 'umask [0-9]' | egrep -v 'umask 077'
+
+#RULE_TITLE The system default umask for daemons must be 027 or 022.
+RHEL-06-000346	V-38642	III	no_value	PASS	FAIL	cat /etc/init.d/functions | egrep -v ^# | egrep 'umask [0-9]' | egrep -v 'umask 02[2,7]'
+
+#RULE_TITLE There must be no .netrc files on the system.
+RHEL-06-000347	V-38619	II	script		PASS	FAIL	pie=\"`df -l | egrep -v 'Filesystem' | grep '%' | sed 's/.*%\ //'`\";pi=\"`for i in \$pie;do find \$i -xdev -name .netrc 2>/dev/null;done`\";if [[ -n \$pi ]];then for i in \$pi;do printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tFailed on \$i\\e[0m\\n\";done;fi
+
+#RULE_TITLE The FTPS/FTP service on the system must be configured with the Department of Defense (DoD) login banner.
+RHEL-06-000348	V-38599	II	script		PASS	FAIL	if [[ `rpm -q vsftpd` == "package vsftpd is not installed" ]];then :;else printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mThe vsftpd package is installed, please remove it!\\e[0m\\n\";fi
+
+#RULE_TITLE The system must be configured to require the use of a CAC, PIV compliant hardware token, or Alternate Logon Token (ALT) for authentication.
+RHEL-06-000349	V-38595	II	script		PASS	FAIL	printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mPlease Evaluate this Manually!\\e[0m\\n\"
+
+#RULE_TITLE The system must require administrator action to unlock an account locked by excessive failed login attempts.
+RHEL-06-000356	V-38592	II	no_value	PASS	FAIL	if [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'preauth' | grep 'silent' | grep 'deny\=3' | grep 'unlock_time\=604800' | grep 'fail_interval\=900'` ]] || [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'authfail' | grep 'deny\=3' | grep 'unlock_time\=604800' | grep 'fail_interval\=900'` ]] || [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'authsucc' | grep 'deny\=3' | grep 'unlock_time\=604800' | grep 'fail_interval\=900'` ]] || [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'account' | grep 'required'` ]];then echo 'fail';fi
+
+#RULE_TITLE The system must disable accounts after excessive login failures within a 15-minute interval.
+RHEL-06-000357	V-38501	II	no_value	PASS	FAIL	if [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'preauth' | grep 'silent' | grep 'deny\=3' | grep 'unlock_time\=604800' | grep 'fail_interval\=900'` ]] || [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'authfail' | grep 'deny\=3' | grep 'unlock_time\=604800' | grep 'fail_interval\=900'` ]] || [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'authsucc' | grep 'deny\=3' | grep 'unlock_time\=604800' | grep 'fail_interval\=900'` ]] || [[ -z `cat /etc/pam.d/system-auth-local | egrep -v ^# | grep 'pam_faillock.so' | grep 'account' | grep 'required'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system, upon successful logon/access, must display to the user the number of unsuccessful logon/access attempts since the last successful logon/access.
+RHEL-06-000372	V-51875	II	no_value	PASS	FAIL	if [[ -z `cat /etc/pam.d/system-auth | egrep -v ^# | egrep 'session' | egrep 'required' | egrep 'pam_lastlog.so' | egrep 'showfailed'` ]];then echo 'fail';fi
+
+#RULE_TITLE Audit log files must have mode 0640 or less permissive.
+RHEL-06-000383	V-38498	II	script		PASS	FAIL	pie=\"`grep '^log_file' /etc/audit/auditd.conf | sed s/^[^\/]*//`\";for i in \$pie;do if [[ -n `ls -lL \$i | awk '{printf $1}' | egrep -v \"\\-\[r,\\-\]\[w,\\-\]\\-\[r,\\-\]\\-\\-\\-\\-\\-\"` ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$i\\e[0m\\n\";fi;done
+
+#RULE_TITLE Audit log files must be owned by root.
+RHEL-06-000384	V-38495	II	script		PASS	FAIL	pie=\"`grep '^log_file' /etc/audit/auditd.conf | sed s/^[^\/]*//`\";for i in \$pie;do if [[ `ls -lL \$i | awk '{printf $3}'` != 'root' ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$i\\e[0m\\n\";fi;done
+
+#RULE_TITLE Audit log directories must have mode 0755 or less permissive.
+RHEL-06-000385	V-38493	II	script		PASS	FAIL	pie=\"`grep '^log_file' /etc/audit/auditd.conf|sed 's/^[^/]*//; s/[^/]*$//'`\";for i in \$pie;do if [[ -n `ls -lLd \$i | awk '{printf $1}' | egrep -v '\\d\[r,\\-\]\[w,\\-\]\[x,\\-\]\[r,\\-\]\\-\[x,\\-\]\[r,\\-\]\\-\[x,\\-\].'` ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$i\\e[0m\\n\";fi;done
+
+#RULE_TITLE The operating system must enforce requirements for the connection of mobile devices to operating systems.
+RHEL-06-000503	V-38490	II	no_value	PASS	FAIL	if [[ -z `cat /etc/modprobe.conf /etc/modprobe.d/* 2>/dev/null | egrep -v ^# | grep 'usb-storage' | awk '{print $3}' | egrep '/bin/true|/bin/false'` ]];then echo 'fail';fi
+
+#RULE_TITLE The operating system must conduct backups of user-level information contained in the operating system per organization defined frequency to conduct backups consistent with recovery time and recovery point objectives.
+RHEL-06-000504	V-38488	II	script		PASS	FAIL	printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mPlease Evaluate this Manually!\\e[0m\\n\"
+
+#RULE_TITLE The operating system must conduct backups of system-level information contained in the information system per organization defined frequency to conduct backups that are consistent with recovery time and recovery point objectives.
+RHEL-06-000505	V-38486	II	script		PASS	FAIL	printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mPlease Evaluate this Manually!\\e[0m\\n\"
+
+#RULE_TITLE The operating system, upon successful logon, must display to the user the date and time of the last logon or access via ssh.
+RHEL-06-000507	V-38484	II	yes		PASS	FAIL	grep -i "^PrintLastLog" /etc/ssh/sshd_config | awk '{printf $2}'
+
+#RULE_TITLE The system must allow locking of graphical desktop sessions.
+RHEL-06-000508	V-38474	III	no_value	FAIL	PASS	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome_settings_daemon/keybindings/screensaver
+
+#RULE_TITLE The system must forward audit records to the syslog service.
+RHEL-06-000509	V-38471	III	yes		PASS	FAIL	cat /etc/audisp/plugins.d/syslog.conf | egrep -v ^# | grep active | awk '{printf $3}'
+
+#RULE_TITLE The audit system must take appropriate action when the audit storage volume is full.
+RHEL-06-000510	V-38468	II	no_value	PASS	FAIL	if [[ `grep disk_full_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Ss][Yy][Ss][Ll][Oo][Gg]  ]] || [[ `grep disk_full_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Ee][Xx][Ee][Cc] ]] || [[ `grep disk_full_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Ss][Ii][Nn][Gg][Ll][Ee] ]] || [[ `grep disk_full_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Hh][Aa][Ll][Tt] ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The audit system must take appropriate action when there are disk errors on the audit storage volume.
+RHEL-06-000511	V-38464	II	no_value	PASS	FAIL	if [[ `grep disk_error_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Ss][Yy][Ss][Ll][Oo][Gg]  ]] || [[ `grep disk_error_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Ee][Xx][Ee][Cc] ]] || [[ `grep disk_error_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Ss][Ii][Nn][Gg][Ll][Ee] ]] || [[ `grep disk_error_action /etc/audit/auditd.conf | egrep -v ^# | awk '{printf $3}'` = [Hh][Aa][Ll][Tt] ]];then :;else echo 'fail';fi
+
+#RULE_TITLE The RPM package management tool must cryptographically verify the authenticity of all software packages during installation.
+RHEL-06-000514	V-38462	I	no_value	PASS	FAIL	grep nosignature /etc/rpmrc /usr/lib/rpm/rpmrc /usr/lib/rpm/redhat/rpmrc ~root/.rpmrc 2>/dev/null
+
+#RULE_TITLE The NFS server must not have the all_squash option enabled.
+RHEL-06-000515	V-38460	III	no_value	PASS	FAIL	grep all_squash /etc/exports | egrep -v 'no_all_squash' | egrep -v ^#
+
+#RULE_TITLE The system package management tool must verify ownership on all files and directories associated with packages.
+RHEL-06-000516	V-38454	III	script		PASS	FAIL	pie=\"`rpm -Va 2>/dev/null | grep '^.....U' | sed 's/.*\\ \\//\\//'`\";if [[ -n \$pie ]];then for i in \$pie;do printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$i\\e[0m\\n\";done;fi
+
+#RULE_TITLE The system package management tool must verify group-ownership on all files and directories associated with packages.
+RHEL-06-000517	V-38453	III	script		PASS	FAIL	pie=\"`rpm -Va 2>/dev/null | grep '^......G' | sed 's/.*\\ \\//\\//'`\";if [[ -n \$pie ]];then for i in \$pie;do printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$i\\e[0m\\n\";done;fi
+
+#RULE_TITLE The system package management tool must verify permissions on all files and directories associated with packages.
+RHEL-06-000518	V-38452	III	script		PASS	FAIL	RH_TST_EVAL_DIRS=\"`rpm -Va 2>/dev/null | grep '^.M' | sed 's/.*\\ \\//\\//'`\";for RH_TST_CUR_DIR in \$RH_TST_EVAL_DIRS;do RH_TST_CUR_RPM=\"\`rpm \-qf \$RH_TST_CUR_DIR\`\";RH_TST_RPM_PERMS=\"\`rpm \-q \-\-queryformat '[%{FILENAMES} %{FILEMODES:perms} \\n]' \$RH_TST_CUR_RPM | egrep \"\$RH_TST_CUR_DIR \" | awk '{print \$2}' | sed 's/\\-/\\\\\\\-/g' | sed 's/r/\\[r|\\\\\\\-\\]/g' | sed 's/w/\\[w|\\\\\\\-\\]/g' | sed 's/x/\\[x|\\\\\\\-\\]/g' | sed 's/t/\\[x|t|\\\\\\\-\\]/'\`\";if [[ -f \$RH_TST_CUR_DIR ]];then if [[ -n \`ls -lL \$RH_TST_CUR_DIR | awk '{printf \$1}' | egrep -v \$RH_TST_RPM_PERMS\` ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$RH_TST_CUR_DIR\\e[0m\\n\";fi;elif [[ -d \$RH_TST_CUR_DIR ]];then if [[ -n \`ls -lLd \$RH_TST_CUR_DIR | awk '{printf \$1}' | egrep -v \$RH_TST_RPM_PERMS\` ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$RH_TST_CUR_DIR\\e[0m\\n\";fi;fi;done
+
+#RULE_TITLE The system package management tool must verify contents of all files associated with packages.
+RHEL-06-000519	V-38447	III	script		PASS	FAIL	pi=\"`rpm -Va 2>/dev/null | awk '$1 ~ /..5/ && $2 != \"c\"' | sed 's/.*\\ \\//\\//'`\";for i in \$pi;do printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$i\\e[0m\\n\";done
+
+#RULE_TITLE The mail system must forward all mail for root to one or more system administrators.
+RHEL-06-000521	V-38446	II	script		PASS	FAIL	pi=\"`postconf alias_maps | sed 's/.*:\\\//\\\//'`\";pie=\"`postmap -q root \$pi 2>/dev/null`\";if [[ -z \$pie ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mMANUAL CHECK - No variable set for mail forwarding\\e[0m\\n\";else printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mMANUAL CHECK - Mail is forwarded to \$pie\\e[0m\\n\";fi
+
+#RULE_TITLE Audit log files must be group-owned by root.
+RHEL-06-000522	V-38445	II	script		PASS	FAIL	pie=\"`grep '^log_file' /etc/audit/auditd.conf | sed s/^[^\/]*//`\";for i in \$pie;do if [[ `ls -lL \$i | awk '{printf $4}'` != 'root' ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mFailed on \$i\\e[0m\\n\";fi;done
+
+#RULE_TITLE The systems local IPv6 firewall must implement a deny-all, allow-by-exception policy for inbound packets.
+RHEL-06-000523	V-38444	II	no_value	PASS	FAIL	if [[ -z `grep -r 'options ipv6 disable\=1' /etc/modprobe.conf /etc/modprobe.d/ 2>&1 | egrep -v 'No such file or directory' | awk -F: '{printf $2}' | egrep -v '^#'` ]];then if [[ `grep ':INPUT' /etc/sysconfig/ip6tables | awk '{printf $2}'` != DROP ]];then echo 'FAIL';fi;fi
+
+#RULE_TITLE The system must provide automated support for account management functions.
+RHEL-06-000524	V-38439	II	script		PASS	FAIL	printf \"\\e[0;33m\\t\\t\\t\\t\\t\\tThis configuration needs to be manually reviewed at a later time\\n\\e[0m\"
+
+#RULE_TITLE Auditing must be enabled at boot by setting a kernel parameter.
+RHEL-06-000525	V-38438	III	no_value	PASS	FAIL	cat /etc/grub.conf | grep kernel | egrep -v '#' | egrep -v 'audit=1'
+
+#RULE_TITLE Automated file system mounting tools must not be enabled unless needed.
+RHEL-06-000526	V-38437	III	script		PASS	FAIL	if [[ -z `chkconfig --list | grep 'autofs' | awk '{printf $2$3$4$5$6$7$8}' | egrep '0:off1:off2:off3:off4:off5:off6:off'` ]];then printf \"\\t\\t\\t\\t\\t\\t\\e[0;33mPlease Verify that autofs is required\\e[0m\\n\";fi
+
+#RULE_TITLE The login user list must be disabled.
+RHEL-06-000527	V-43150	II	true		PASS	FAIL	gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/disable_user_list
+
+#RULE_TITLE The noexec option must be added to the /tmp partition.
+RHEL-06-000528	V-57569	II	no_value	FAIL	PASS	cat /etc/fstab | egrep -v ^# | egrep '\\s/tmp\\s' | egrep 'noexec'
+
+#RULE_TITLE The sudo command must require authentication.
+RHEL-06-000529	V-58901	II	no_value	PASS	FAIL	cat /etc/sudoers /etc/sudoers.d/* 2>/dev/null | egrep '^[^#]*NOPASSWD|^[^#]*!authenticate'
+
+#END_OF_TESTS
+
+################################################################################
+# Completion of Evaluation File
+################################################################################
