@@ -1,0 +1,78 @@
+#!/bin/bash
+
+if [[ -z ${1} ]];then
+        printf "You did not provide a file to read\n"
+        exit
+fi
+
+BASE_DIR=`pwd`
+NEW_SCRIPT=${BASE_DIR}/${1}.sh
+
+
+CHECK_1=0
+CHECK_2=0
+CHECK_3=0
+CHECK_4=0
+CHECK_5=0
+
+variable_maker ()
+{
+
+VAR_1=$1
+VAR_2=$2
+VAR_3=$3
+VAR_4=$4
+
+if [[ ${VAR_1} == "Group" ]];then
+        if [[ ${VAR_2} == "ID" ]];then
+                CHECK_1=1
+                GROUP_ID=$4
+        elif [[ ${VAR_2} == "Title:" ]];then
+                CHECK_2=1
+                GROUP_TITLE=$3
+        fi
+elif [[ ${VAR_1} == "Severity:" ]];then
+        CHECK_3=1
+        SEVERITY=$3
+elif [[ ${VAR_1} == "Rule" ]];then
+        if [[ ${VAR_2} == "Version" ]];then
+                CHECK_4=1
+                RULE_VERSION=$4
+        elif [[ ${VAR_2} == "Title:" ]];then
+                CHECK_5=1
+                shift 2
+                RULE_TITLE=$*
+        fi
+elif [[ ${VAR_1} == "CCI:" ]];then
+        if [[ ${CHECK_1} == 1 ]] && [[ ${CHECK_2} == 1 ]] && [[ ${CHECK_3} == 1 ]] && [[ ${CHECK_4} == 1 ]] && [[ ${CHECK_5} == 1 ]];then
+                CHECK_1=0
+                CHECK_2=0
+                CHECK_3=0
+                CHECK_4=0
+                CHECK_5=0
+                FUNCTION_NAME=`echo ${RULE_VERSION} | sed 's/\-/_/g'`
+                FUNC_SHORT=`echo ${FUNCTION_NAME} | sed 's/RHEL_06_000//'`
+                ALL_FUNCS="${ALL_FUNCS} ${FUNC_SHORT}"
+                printf "${FUNCTION_NAME} ()\n" >> ${NEW_SCRIPT}
+                printf "{\n\n" >> ${NEW_SCRIPT}
+                printf "# Automated Variables\n" >> ${NEW_SCRIPT}
+                printf "RULE_VERSION=\"${RULE_VERSION}\"\n" >> ${NEW_SCRIPT}
+                printf "SEVERITY=\"${SEVERITY}\"\n" >> ${NEW_SCRIPT}
+                printf "GROUP_ID=\"${GROUP_ID}\"\n" >> ${NEW_SCRIPT}
+                printf "GROUP_TITLE=\"${GROUP_TITLE}\"\n" >> ${NEW_SCRIPT}
+                printf "RULE_TITLE=\"${RULE_TITLE}\"\n\n" >> ${NEW_SCRIPT}
+                printf "# Manual Variables\n" >> ${NEW_SCRIPT}
+                printf "RULE_TYPE=\"Automatic, Variable, Policy, Manual\"\n\n" >> ${NEW_SCRIPT}
+                printf "# Put in Validation Script here\n\n" >> ${NEW_SCRIPT}
+                printf "RESULT=\"Pass, Fail, Not_Applicable, ???\"\n\n" >> ${NEW_SCRIPT}
+                printf "}\n\n" >> ${NEW_SCRIPT}
+        fi
+fi
+
+}
+
+while read STIG_TEXT;do
+        variable_maker ${STIG_TEXT}
+done < ${1}
+
+printf "ALL_TESTS=\"${ALL_FUNCS}\"\n" >> ${NEW_SCRIPT}
