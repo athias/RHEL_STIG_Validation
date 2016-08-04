@@ -18,6 +18,7 @@ This is specifically built in bash to ensure the maximum number of people are ca
 
 # Updates
 
+- 20160803: I've uploaded some of the base files to be used in the new script design, expect more to come.
 - I will continue to update this script actively
 - Updates will be made upon new STIG releases
 - Plans for a mostly complete re-write is in progress
