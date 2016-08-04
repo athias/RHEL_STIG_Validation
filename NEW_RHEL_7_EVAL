@@ -1,0 +1,4488 @@
+#!/bin/bash
+
+ALL_TESTS=" 10010 10020 10030 10031 10040 10060 10070 10071 10072 10073 10074 10090 10100 10110 10120 10130 10140 10150 10160 10170 10180 10190 10200 10210 10220 10230 10240 10250 10260 10270 10280 10371 10372 10373 10380 10381 10400 10401 10402 10420 10430 10431 10440 10441 10442 10460 10470 10490 10500 20000 20010 20090 20130 20140 20150 20151 20152 20160 20161 20170 20200 20210 20211 20220 20230 20240 20250 20290 20300 20310 20360 20370 20620 20630 20640 20650 20660 20670 20680 20690 20700 20840 20850 20860 20870 20880 20940 21010 21011 21012 21050 21060 21160 21190 21200 21230 21240 21250 21260 21270 21280 21600 21610 21620 21760 21910 30010 30090 30310 30330 30331 30340 30350 30351 30352 30380 30381 30382 30383 30390 30391 30392 30400 30401 30402 30403 30404 30405 30420 30421 30422 30423 30424 30425 30441 30442 30443 30444 30490 30491 30492 30510 30511 30512 30513 30514 30521 30522 30523 30524 30525 30526 30530 30531 30540 30541 30550 30560 30561 30630 30670 30671 30672 30673 30674 30710 30750 30751 30752 30753 30754 30770 30780 30810 30820 40010 40020 40030 40040 40050 40060 40070 40080 40100 40110 40160 40170 40180 40181 40182 40190 40191 40210 40230 40250 40260 40261 40290 40300 40301 40310 40320 40330 40331 40332 40333 40334 40350 40351 40380 40410 40420 40421 40470 40480 40490 40500 40520 40540 40560 40580 40590 40620 40640 40650 40660 40670 40680 40690 40700 40730 40740 40810 40820 40830 40860"
+
+RHEL_07_010010 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010010"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010010"
+GROUP_TITLE="SRG-OS-000257-GPOS-00098"
+RULE_TITLE="The file permissions, ownership, and group membership of system files and commands must match the vendor values."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010020 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010020"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010020"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The cryptographic hash of system files and commands must match vendor values."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010030 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010030"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010030"
+GROUP_TITLE="SRG-OS-000023-GPOS-00006"
+RULE_TITLE="The operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system via a graphical user logon."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010031 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010031"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010031"
+GROUP_TITLE="SRG-OS-000023-GPOS-00006"
+RULE_TITLE="The operating system must display the approved Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system via a graphical user logon."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010040 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010040"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010040"
+GROUP_TITLE="SRG-OS-000023-GPOS-00006"
+RULE_TITLE="The operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system via a command line user logon."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010060 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010060"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010060"
+GROUP_TITLE="SRG-OS-000028-GPOS-00009"
+RULE_TITLE="The operating system must enable a user session lock until that user re-establishes access using established identification and authentication procedures."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010070 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010070"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010070"
+GROUP_TITLE="SRG-OS-000029-GPOS-00010"
+RULE_TITLE="The operating system must initiate a screensaver after a 15-minute period of inactivity for graphical user interfaces."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010071 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010071"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010071"
+GROUP_TITLE="SRG-OS-000029-GPOS-00010"
+RULE_TITLE="The operating system must initiate a session lock after a 15-minute period of inactivity for all connection types."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010072 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010072"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010072"
+GROUP_TITLE="SRG-OS-000029-GPOS-00010"
+RULE_TITLE="The operating system must have the screen package installed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010073 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010073"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010073"
+GROUP_TITLE="SRG-OS-000029-GPOS-00010"
+RULE_TITLE="The operating system must initiate a session lock for the screensaver after a period of inactivity for graphical user interfaces."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010074 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010074"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010074"
+GROUP_TITLE="SRG-OS-000029-GPOS-00010"
+RULE_TITLE="The operating system must initiate a session lock for graphical user interfaces when the screensaver is activated."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010090 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010090"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010090"
+GROUP_TITLE="SRG-OS-000069-GPOS-00037"
+RULE_TITLE="When passwords are changed or new passwords are established, the new password must contain at least one upper-case character."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010100 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010100"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010100"
+GROUP_TITLE="SRG-OS-000070-GPOS-00038"
+RULE_TITLE="When passwords are changed or new passwords are established, the new password must contain at least one lower-case character."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010110 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010110"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010110"
+GROUP_TITLE="SRG-OS-000071-GPOS-00039"
+RULE_TITLE="When passwords are changed or new passwords are assigned, the new password must contain at least one numeric character."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010120 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010120"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010120"
+GROUP_TITLE="SRG-OS-000266-GPOS-00101"
+RULE_TITLE="When passwords are changed or new passwords are assigned, the new password must contain at least one special character."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010130 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010130"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010130"
+GROUP_TITLE="SRG-OS-000072-GPOS-00040"
+RULE_TITLE="When passwords are changed a minimum of eight of the total number of characters must be changed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010140 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010140"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010140"
+GROUP_TITLE="SRG-OS-000072-GPOS-00040"
+RULE_TITLE="When passwords are changed a minimum of four character classes must be changed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010150 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010150"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010150"
+GROUP_TITLE="SRG-OS-000072-GPOS-00040"
+RULE_TITLE="When passwords are changed the number of repeating consecutive characters must not be more than four characters."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010160 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010160"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010160"
+GROUP_TITLE="SRG-OS-000072-GPOS-00040"
+RULE_TITLE="When passwords are changed the number of repeating characters of the same character class must not be more than four characters."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010170 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010170"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010170"
+GROUP_TITLE="SRG-OS-000073-GPOS-00041"
+RULE_TITLE="The PAM system service must be configured to store only encrypted representations of passwords."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010180 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010180"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010180"
+GROUP_TITLE="SRG-OS-000073-GPOS-00041"
+RULE_TITLE="The shadow file must be configured to store only encrypted representations of passwords."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010190 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010190"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010190"
+GROUP_TITLE="SRG-OS-000073-GPOS-00041"
+RULE_TITLE="User and group account administration utilities must be configured to store only encrypted representations of passwords."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010200 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010200"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010200"
+GROUP_TITLE="SRG-OS-000075-GPOS-00043"
+RULE_TITLE="Passwords for new users must be restricted to a 24 hours/1 day minimum lifetime."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010210 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010210"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010210"
+GROUP_TITLE="SRG-OS-000075-GPOS-00043"
+RULE_TITLE="Passwords must be restricted to a 24 hours/1 day minimum lifetime."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010220 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010220"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010220"
+GROUP_TITLE="SRG-OS-000076-GPOS-00044"
+RULE_TITLE="Passwords for new users must be restricted to a 60-day maximum lifetime."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010230 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010230"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010230"
+GROUP_TITLE="SRG-OS-000076-GPOS-00044"
+RULE_TITLE="Existing passwords must be restricted to a 60-day maximum lifetime."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010240 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010240"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010240"
+GROUP_TITLE="SRG-OS-000077-GPOS-00045"
+RULE_TITLE="Passwords must be prohibited from reuse for a minimum of five generations."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010250 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010250"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010250"
+GROUP_TITLE="SRG-OS-000078-GPOS-00046"
+RULE_TITLE="Passwords must be a minimum of 15 characters in length."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010260 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010260"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010260"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not have accounts configured with blank or null passwords."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010270 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010270"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010270"
+GROUP_TITLE="SRG-OS-000106-GPOS-00053"
+RULE_TITLE="The SSH daemon must not allow authentication using an empty password."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010280 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010280"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010280"
+GROUP_TITLE="SRG-OS-000118-GPOS-00060"
+RULE_TITLE="The operating system must disable account identifiers (individuals, groups, roles, and devices) if the password expires."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010371 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010371"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010371"
+GROUP_TITLE="SRG-OS-000329-GPOS-00128"
+RULE_TITLE="If three unsuccessful logon attempts within 15 minutes occur the associated account must be locked."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010372 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010372"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010372"
+GROUP_TITLE="SRG-OS-000329-GPOS-00128"
+RULE_TITLE="Accounts subject to three unsuccessful login attempts within 15 minutes must be locked for the maximum configurable period."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010373 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010373"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010373"
+GROUP_TITLE="SRG-OS-000329-GPOS-00128"
+RULE_TITLE="If three unsuccessful root logon attempts within 15 minutes occur the associated account must be locked."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010380 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010380"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010380"
+GROUP_TITLE="SRG-OS-000373-GPOS-00156"
+RULE_TITLE="Users must provide a password for privilege escalation."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010381 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010381"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010381"
+GROUP_TITLE="SRG-OS-000373-GPOS-00156"
+RULE_TITLE="Users must re-authenticate for privilege escalation."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010400 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010400"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010400"
+GROUP_TITLE="SRG-OS-000383-GPOS-00166"
+RULE_TITLE="The operating system must prohibit the use of cached nss authenticators after one day."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010401 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010401"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010401"
+GROUP_TITLE="SRG-OS-000383-GPOS-00166"
+RULE_TITLE="The operating system must prohibit the use of cached PAM authenticators after one day."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010402 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010402"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010402"
+GROUP_TITLE="SRG-OS-000383-GPOS-00166"
+RULE_TITLE="The operating system must prohibit the use of cached SSH authenticators after one day."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010420 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010420"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010420"
+GROUP_TITLE="SRG-OS-000480-GPOS-00226"
+RULE_TITLE="The delay between logon prompts following a failed console logon attempt must be at least four seconds."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010430 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010430"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010430"
+GROUP_TITLE="SRG-OS-000480-GPOS-00229"
+RULE_TITLE="The operating system must not allow an unattended or automatic logon to the system via a graphical user interface."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010431 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010431"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010431"
+GROUP_TITLE="SRG-OS-000480-GPOS-00229"
+RULE_TITLE="The operating system must not allow guest logon to the system."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010440 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010440"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010440"
+GROUP_TITLE="SRG-OS-000480-GPOS-00229"
+RULE_TITLE="The operating system must not allow empty passwords for SSH logon to the system."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010441 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010441"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010441"
+GROUP_TITLE="SRG-OS-000480-GPOS-00229"
+RULE_TITLE="The operating system must not allow users to override SSH environment variables."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010442 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010442"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010442"
+GROUP_TITLE="SRG-OS-000480-GPOS-00229"
+RULE_TITLE="The operating system must not allow a non-certificate trusted host SSH logon to the system."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010460 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010460"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010460"
+GROUP_TITLE="SRG-OS-000080-GPOS-00048"
+RULE_TITLE="Systems with a Basic Input/Output System (BIOS) must require authentication upon booting into single-user and maintenance modes."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010470 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010470"
+SEVERITY="I"
+GROUP_ID="RHEL-07-010470"
+GROUP_TITLE="SRG-OS-000080-GPOS-00048"
+RULE_TITLE="Systems using Unified Extensible Firmware Interface (UEFI) must require authentication upon booting into single-user and maintenance modes."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010490 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010490"
+SEVERITY="III"
+GROUP_ID="RHEL-07-010490"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Unnecessary default system accounts must be removed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_010500 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-010500"
+SEVERITY="II"
+GROUP_ID="RHEL-07-010500"
+GROUP_TITLE="SRG-OS-000104-GPOS-00051"
+RULE_TITLE="The operating system must uniquely identify and must authenticate organizational users (or processes acting on behalf of organizational users) using multi-factor authentication."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020000 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020000"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020000"
+GROUP_TITLE="SRG-OS-000095-GPOS-00049"
+RULE_TITLE="The rsh-server package must not be installed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020010 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020010"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020010"
+GROUP_TITLE="SRG-OS-000095-GPOS-00049"
+RULE_TITLE="The ypserv package must not be installed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020090 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020090"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020090"
+GROUP_TITLE="SRG-OS-000324-GPOS-00125"
+RULE_TITLE="The operating system must prevent non-privileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020130 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020130"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020130"
+GROUP_TITLE="SRG-OS-000363-GPOS-00150"
+RULE_TITLE="A file integrity tool must verify the baseline operating system configuration at least weekly."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020140 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020140"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020140"
+GROUP_TITLE="SRG-OS-000363-GPOS-00150"
+RULE_TITLE="Designated personnel must be notified if baseline configurations are changed in an unauthorized manner."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020150 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020150"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020150"
+GROUP_TITLE="SRG-OS-000366-GPOS-00153"
+RULE_TITLE="The operating system must prevent the installation of software, patches, service packs, device drivers, or operating system components from a repository without verification they have been digitally signed using a certificate that is issued by a Certificate Authority (CA) that is recognized and approved by the organization."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020151 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020151"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020151"
+GROUP_TITLE="SRG-OS-000366-GPOS-00153"
+RULE_TITLE="The operating system must prevent the installation of software, patches, service packs, device drivers, or operating system components of local packages without verification they have been digitally signed using a certificate that is issued by a Certificate Authority (CA) that is recognized and approved by the organization."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020152 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020152"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020152"
+GROUP_TITLE="SRG-OS-000366-GPOS-00153"
+RULE_TITLE="The operating system must prevent the installation of software, patches, service packs, device drivers, or operating system components of packages without verification of the repository metadata."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020160 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020160"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020160"
+GROUP_TITLE="SRG-OS-000114-GPOS-00059"
+RULE_TITLE="USB mass storage must be disabled."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020161 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020161"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020161"
+GROUP_TITLE="SRG-OS-000114-GPOS-00059"
+RULE_TITLE="File system automounter must be disabled unless required."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020170 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020170"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020170"
+GROUP_TITLE="SRG-OS-000405-GPOS-00184"
+RULE_TITLE="Operating systems handling data requiring data-at-rest protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020200 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020200"
+SEVERITY="III"
+GROUP_ID="RHEL-07-020200"
+GROUP_TITLE="SRG-OS-000437-GPOS-00194"
+RULE_TITLE="The operating system must remove all software components after updated versions have been installed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020210 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020210"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020210"
+GROUP_TITLE="SRG-OS-000445-GPOS-00199"
+RULE_TITLE="The operating system must enable SELinux."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020211 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020211"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020211"
+GROUP_TITLE="SRG-OS-000445-GPOS-00199"
+RULE_TITLE="The operating system must enable the SELinux targeted policy."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020220 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020220"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020220"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The x86 Ctrl-Alt-Delete key sequence must be disabled."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020230 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020230"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020230"
+GROUP_TITLE="SRG-OS-000480-GPOS-00228"
+RULE_TITLE="The operating system must define default permissions for all authenticated users in such a way that the user can only read and modify their own files."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020240 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020240"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020240"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The operating system must be a supported release."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020250 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020250"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020250"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="System security patches and updates must be installed and up to date."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020290 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020290"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020290"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not have unnecessary accounts."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020300 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020300"
+SEVERITY="III"
+GROUP_ID="RHEL-07-020300"
+GROUP_TITLE="SRG-OS-000104-GPOS-00051"
+RULE_TITLE="All Group Identifiers (GIDs) referenced in the /etc/passwd file must be defined in the /etc/group file."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020310 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020310"
+SEVERITY="I"
+GROUP_ID="RHEL-07-020310"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The root account must be the only account having unrestricted access to the system."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020360 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020360"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020360"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All files and directories must have a valid owner."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020370 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020370"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020370"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All files and directories must have a valid group owner."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020620 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020620"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020620"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local interactive users must have a home directory assigned in the /etc/passwd file."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020630 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020630"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020630"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local interactive user accounts, upon creation, must be assigned a home directory."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020640 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020640"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020640"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local interactive user home directories defined in the /etc/passwd file must exist."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020650 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020650"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020650"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local interactive user home directories must have mode 0750 or less permissive."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020660 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020660"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020660"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local interactive user home directories must be owned by their respective users."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020670 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020670"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020670"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local interactive user home directories must be group-owned by the home directory owners primary group."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020680 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020680"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020680"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All files and directories contained in local interactive user home directories must be owned by the owner of the home directory."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020690 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020690"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020690"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All files and directories contained in local interactive user home directories must be group-owned by a group of which the home directory owner is a member."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020700 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020700"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020700"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All files and directories contained in local interactive user home directories must have mode 0750 or less permissive."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020840 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020840"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020840"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local initialization files for interactive users must be owned by the home directory user or root."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020850 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020850"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020850"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Local initialization files for local interactive users must be group-owned by the users primary group or root."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020860 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020860"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020860"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local initialization files must have mode 0740 or less permissive."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020870 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020870"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020870"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All local interactive user initialization files executable search paths must contain only absolute paths."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020880 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020880"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020880"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Local initialization files must not execute world-writable programs."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_020940 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-020940"
+SEVERITY="II"
+GROUP_ID="RHEL-07-020940"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All system device files must be correctly labeled to prevent unauthorized modification."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021010 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021010"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021010"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Files systems that contain user home directories must be mounted to prevent files with the setuid and setgid bit set from being executed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021011 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021011"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021011"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Files systems that are used with removable media must be mounted to prevent files with the setuid and setgid bit set from being executed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021012 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021012"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021012"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Files systems that are being imported via Network File System (NFS) must be mounted to prevent files with the setuid and setgid bit set from being executed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021050 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021050"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021050"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="All world-writable directories must be group-owned by root, sys, bin, or an application group."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021060 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021060"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021060"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The umask must be set to 077 for all local interactive user accounts."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021160 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021160"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021160"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Cron logging must be implemented."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021190 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021190"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021190"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="If the cron.allow file exists it must be owned by root."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021200 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021200"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021200"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="If the cron.allow file exists it must be group-owned by root."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021230 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021230"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021230"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Kernel core dumps must be disabled unless needed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021240 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021240"
+SEVERITY="III"
+GROUP_ID="RHEL-07-021240"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="A separate file system must be used for user home directories (such as /home or an equivalent)."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021250 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021250"
+SEVERITY="III"
+GROUP_ID="RHEL-07-021250"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must use a separate file system for /var."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021260 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021260"
+SEVERITY="III"
+GROUP_ID="RHEL-07-021260"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must use /var/log/audit for the system audit data path."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021270 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021270"
+SEVERITY="III"
+GROUP_ID="RHEL-07-021270"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must use a separate file system for /tmp (or equivalent)."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021280 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021280"
+SEVERITY="I"
+GROUP_ID="RHEL-07-021280"
+GROUP_TITLE="SRG-OS-000033-GPOS-00014"
+RULE_TITLE="The operating system must implement NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021600 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021600"
+SEVERITY="III"
+GROUP_ID="RHEL-07-021600"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The file integrity tool must be configured to verify Access Control Lists (ACLs)."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021610 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021610"
+SEVERITY="III"
+GROUP_ID="RHEL-07-021610"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The file integrity tool must be configured to verify extended attributes."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021620 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021620"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021620"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The file integrity tool must use FIPS 140-2 approved cryptographic hashes for validating file contents and directories."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021760 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021760"
+SEVERITY="II"
+GROUP_ID="RHEL-07-021760"
+GROUP_TITLE="SRG-OS-000364-GPOS-00151"
+RULE_TITLE="The system must not allow removable media to be used as the boot loader unless approved."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_021910 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-021910"
+SEVERITY="I"
+GROUP_ID="RHEL-07-021910"
+GROUP_TITLE="SRG-OS-000095-GPOS-00049"
+RULE_TITLE="The telnet-server package must not be installed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030010 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030010"
+SEVERITY="I"
+GROUP_ID="RHEL-07-030010"
+GROUP_TITLE="SRG-OS-000038-GPOS-00016"
+RULE_TITLE="Auditing must be configured to produce records containing information to establish what type of events occurred, where the events occurred, the source of the events, and the outcome of the events. These audit records must also identify individual identities of group account users."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030090 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030090"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030090"
+GROUP_TITLE="SRG-OS-000046-GPOS-00022"
+RULE_TITLE="The operating system must shut down upon audit processing failure, unless availability is an overriding concern. If availability is a concern, the system must alert the designated staff (System Administrator [SA] and Information System Security Officer [ISSO] at a minimum) in the event of an audit processing failure."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030310 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030310"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030310"
+GROUP_TITLE="SRG-OS-000327-GPOS-00127"
+RULE_TITLE="All privileged function executions must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030330 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030330"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030330"
+GROUP_TITLE="SRG-OS-000342-GPOS-00133"
+RULE_TITLE="The operating system must off-load audit records onto a different system or media from the system being audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030331 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030331"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030331"
+GROUP_TITLE="SRG-OS-000342-GPOS-00133"
+RULE_TITLE="The operating system must encrypt the transfer of audit records off-loaded onto a different system or media from the system being audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030340 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030340"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030340"
+GROUP_TITLE="SRG-OS-000342-GPOS-00133"
+RULE_TITLE="The audit system must take appropriate action when the audit storage volume is full."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030350 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030350"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030350"
+GROUP_TITLE="SRG-OS-000343-GPOS-00134"
+RULE_TITLE="The operating system must immediately notify the System Administrator (SA) and Information System Security Officer ISSO (at a minimum) when allocated audit record storage volume reaches 750f the repository maximum audit record storage capacity."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030351 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030351"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030351"
+GROUP_TITLE="SRG-OS-000343-GPOS-00134"
+RULE_TITLE="The operating system must immediately notify the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) via email when the threshold for the repository maximum audit record storage capacity is reached."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030352 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030352"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030352"
+GROUP_TITLE="SRG-OS-000343-GPOS-00134"
+RULE_TITLE="The operating system must immediately notify the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when the threshold for the repository maximum audit record storage capacity is reached."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030380 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030380"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030380"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the chown command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030381 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030381"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030381"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the fchown command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030382 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030382"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030382"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the lchown command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030383 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030383"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030383"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the fchownat command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030390 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030390"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030390"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the chmod command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030391 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030391"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030391"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the fchmod command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030392 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030392"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030392"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the fchmodat command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030400 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030400"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030400"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the setxattr command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030401 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030401"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030401"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the fsetxattr command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030402 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030402"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030402"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the lsetxattr command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030403 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030403"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030403"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the removexattr command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030404 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030404"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030404"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the fremovexattr command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030405 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030405"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030405"
+GROUP_TITLE="SRG-OS-000458-GPOS-00203"
+RULE_TITLE="All uses of the lremovexattr command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030420 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030420"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030420"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the creat command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030421 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030421"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030421"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the open command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030422 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030422"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030422"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the openat command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030423 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030423"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030423"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the open_by_handle_at command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030424 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030424"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030424"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the truncate command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030425 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030425"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030425"
+GROUP_TITLE="SRG-OS-000064-GPOS-00033"
+RULE_TITLE="All uses of the ftruncate command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030441 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030441"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030441"
+GROUP_TITLE="SRG-OS-000392-GPOS-00172"
+RULE_TITLE="All uses of the semanage command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030442 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030442"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030442"
+GROUP_TITLE="SRG-OS-000392-GPOS-00172"
+RULE_TITLE="All uses of the setsebool command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030443 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030443"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030443"
+GROUP_TITLE="SRG-OS-000392-GPOS-00172"
+RULE_TITLE="All uses of the chcon command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030444 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030444"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030444"
+GROUP_TITLE="SRG-OS-000392-GPOS-00172"
+RULE_TITLE="All uses of the restorecon command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030490 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030490"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030490"
+GROUP_TITLE="SRG-OS-000392-GPOS-00172"
+RULE_TITLE="The operating system must generate audit records for all successful/unsuccessful account access count events."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030491 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030491"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030491"
+GROUP_TITLE="SRG-OS-000392-GPOS-00172"
+RULE_TITLE="The operating system must generate audit records for all unsuccessful account access events."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030492 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030492"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030492"
+GROUP_TITLE="SRG-OS-000392-GPOS-00172"
+RULE_TITLE="The operating system must generate audit records for all successful account access events."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030510 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030510"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030510"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the passwd command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030511 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030511"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030511"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the unix_chkpwd command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030512 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030512"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030512"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the gpasswd command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030513 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030513"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030513"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the chage command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030514 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030514"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030514"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the userhelper command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030521 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030521"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030521"
+GROUP_TITLE="SRG-OS-000037-GPOS-00015"
+RULE_TITLE="All uses of the su command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030522 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030522"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030522"
+GROUP_TITLE="SRG-OS-000037-GPOS-00015"
+RULE_TITLE="All uses of the sudo command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030523 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030523"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030523"
+GROUP_TITLE="SRG-OS-000037-GPOS-00015"
+RULE_TITLE="The operating system must generate audit records containing the full-text recording of modifications to sudo configuration files."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030524 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030524"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030524"
+GROUP_TITLE="SRG-OS-000037-GPOS-00015"
+RULE_TITLE="All uses of the newgrp command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030525 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030525"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030525"
+GROUP_TITLE="SRG-OS-000037-GPOS-00015"
+RULE_TITLE="All uses of the chsh command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030526 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030526"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030526"
+GROUP_TITLE="SRG-OS-000037-GPOS-00015"
+RULE_TITLE="All uses of the sudoedit command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030530 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030530"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030530"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the mount command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030531 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030531"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030531"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the umount command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030540 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030540"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030540"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the postdrop command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030541 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030541"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030541"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the postqueue command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030550 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030550"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030550"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the ssh-keysign command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030560 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030560"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030560"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the pt_chown command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030561 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030561"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030561"
+GROUP_TITLE="SRG-OS-000042-GPOS-00020"
+RULE_TITLE="All uses of the crontab command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030630 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030630"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030630"
+GROUP_TITLE="SRG-OS-000471-GPOS-00215"
+RULE_TITLE="All uses of the pam_timestamp_check command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030670 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030670"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030670"
+GROUP_TITLE="SRG-OS-000471-GPOS-00216"
+RULE_TITLE="All uses of the init_module command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030671 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030671"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030671"
+GROUP_TITLE="SRG-OS-000471-GPOS-00216"
+RULE_TITLE="All uses of the delete_module command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030672 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030672"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030672"
+GROUP_TITLE="SRG-OS-000471-GPOS-00216"
+RULE_TITLE="All uses of the insmod command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030673 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030673"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030673"
+GROUP_TITLE="SRG-OS-000471-GPOS-00216"
+RULE_TITLE="All uses of the rmmod command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030674 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030674"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030674"
+GROUP_TITLE="SRG-OS-000471-GPOS-00216"
+RULE_TITLE="All uses of the modprobe command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030710 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030710"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030710"
+GROUP_TITLE="SRG-OS-000004-GPOS-00004"
+RULE_TITLE="The operating system must generate audit records for all account creations, modifications, disabling, and termination events."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030750 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030750"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030750"
+GROUP_TITLE="SRG-OS-000466-GPOS-00210"
+RULE_TITLE="All uses of the rename command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030751 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030751"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030751"
+GROUP_TITLE="SRG-OS-000466-GPOS-00210"
+RULE_TITLE="All uses of the renameat command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030752 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030752"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030752"
+GROUP_TITLE="SRG-OS-000466-GPOS-00210"
+RULE_TITLE="All uses of the rmdir command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030753 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030753"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030753"
+GROUP_TITLE="SRG-OS-000466-GPOS-00210"
+RULE_TITLE="All uses of the unlink command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030754 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030754"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030754"
+GROUP_TITLE="SRG-OS-000466-GPOS-00210"
+RULE_TITLE="All uses of the unlinkat command must be audited."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030770 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030770"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030770"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must send rsyslog output to a log aggregation server."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030780 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030780"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030780"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The rsyslog daemon must not accept log messages from other servers unless the server is being used for log aggregation."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030810 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030810"
+SEVERITY="I"
+GROUP_ID="RHEL-07-030810"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must use a DoD-approved virus scan program."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_030820 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-030820"
+SEVERITY="II"
+GROUP_ID="RHEL-07-030820"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must update the DoD-approved virus scan program every seven days or more frequently."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040010 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040010"
+SEVERITY="III"
+GROUP_ID="RHEL-07-040010"
+GROUP_TITLE="SRG-OS-000027-GPOS-00008"
+RULE_TITLE="The operating system must limit the number of concurrent sessions to 10 for all accounts and/or account types."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040020 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040020"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040020"
+GROUP_TITLE="SRG-OS-000032-GPOS-00013"
+RULE_TITLE="The system must log informational authentication data."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040030 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040030"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040030"
+GROUP_TITLE="SRG-OS-000066-GPOS-00034"
+RULE_TITLE="The operating system, for PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040040 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040040"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040040"
+GROUP_TITLE="SRG-OS-000067-GPOS-00035"
+RULE_TITLE="The operating system, for PKI-based authentication, must enforce authorized access to all PKI private keys stored or used by the operating system."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040050 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040050"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040050"
+GROUP_TITLE="SRG-OS-000068-GPOS-00036"
+RULE_TITLE="The operating system must map the authenticated identity to the user or group account for PKI-based authentication."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040060 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040060"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040060"
+GROUP_TITLE="SRG-OS-000068-GPOS-00036"
+RULE_TITLE="The cn_map file must have mode 0644 or less permissive."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040070 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040070"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040070"
+GROUP_TITLE="SRG-OS-000068-GPOS-00036"
+RULE_TITLE="The cn_map file must be owned by root."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040080 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040080"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040080"
+GROUP_TITLE="SRG-OS-000068-GPOS-00036"
+RULE_TITLE="The cn_map file must be group owned by root."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040100 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040100"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040100"
+GROUP_TITLE="SRG-OS-000096-GPOS-00050"
+RULE_TITLE="The host must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services, as defined in the Ports, Protocols, and Services Management Component Local Service Assessment (PPSM CLSA) and vulnerability assessments."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040110 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040110"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040110"
+GROUP_TITLE="SRG-OS-000033-GPOS-00014"
+RULE_TITLE="A FIPS 140-2 approved cryptographic algorithm must be used for SSH communications."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040160 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040160"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040160"
+GROUP_TITLE="SRG-OS-000163-GPOS-00072"
+RULE_TITLE="All network connections associated with a communication session must be terminated at the end of the session or after 10 minutes of inactivity from the user at a command prompt, except to fulfill documented and validated mission requirements."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040170 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040170"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040170"
+GROUP_TITLE="SRG-OS-000023-GPOS-00006"
+RULE_TITLE="The Standard Mandatory DoD Notice and Consent Banner must be displayed immediately prior to, or as part of, remote access logon prompts."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040180 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040180"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040180"
+GROUP_TITLE="SRG-OS-000250-GPOS-00093"
+RULE_TITLE="The operating system must implement cryptography to protect the integrity of Lightweight Directory Access Protocol (LDAP) authentication communications."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040181 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040181"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040181"
+GROUP_TITLE="SRG-OS-000250-GPOS-00093"
+RULE_TITLE="The operating system must implement cryptography to protect the integrity of Lightweight Directory Access Protocol (LDAP) communications."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040182 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040182"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040182"
+GROUP_TITLE="SRG-OS-000250-GPOS-00093"
+RULE_TITLE="The operating system must implement cryptography to protect the integrity of Lightweight Directory Access Protocol (LDAP) communications."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040190 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040190"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040190"
+GROUP_TITLE="SRG-OS-000163-GPOS-00072"
+RULE_TITLE="All network connections associated with SSH traffic must terminate at the end of the session or after 10 minutes of inactivity, except to fulfill documented and validated mission requirements."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040191 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040191"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040191"
+GROUP_TITLE="SRG-OS-000163-GPOS-00072"
+RULE_TITLE="All network connections associated with SSH traffic must terminate after a period of inactivity."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040210 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040210"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040210"
+GROUP_TITLE="SRG-OS-000355-GPOS-00143"
+RULE_TITLE="The operating system must, for networked systems, synchronize clocks with a server that is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS)."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040230 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040230"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040230"
+GROUP_TITLE="SRG-OS-000384-GPOS-00167"
+RULE_TITLE="The operating system, if using PKI-based authentication, must implement a local cache of revocation data to certificate validation in case of the inability to access revocation information via the network."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040250 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040250"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040250"
+GROUP_TITLE="SRG-OS-000420-GPOS-00186"
+RULE_TITLE="The operating system must protect against or limit the effects of Denial of Service (DoS) attacks by validating the operating system is implementing rate-limiting measures on impacted network interfaces."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040260 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040260"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040260"
+GROUP_TITLE="SRG-OS-000423-GPOS-00187"
+RULE_TITLE="All networked systems must have SSH installed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040261 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040261"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040261"
+GROUP_TITLE="SRG-OS-000423-GPOS-00187"
+RULE_TITLE="All networked systems must use SSH for confidentiality and integrity of transmitted and received information as well as information during preparation for transmission."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040290 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040290"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040290"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The operating system must enable an application firewall, if available."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040300 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040300"
+SEVERITY="III"
+GROUP_ID="RHEL-07-040300"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must display the date and time of the last successful account logon upon logon."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040301 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040301"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040301"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must display the date and time of the last successful account logon upon an SSH logon."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040310 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040310"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040310"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not permit direct logons to the root account using remote access via SSH."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040320 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040320"
+SEVERITY="III"
+GROUP_ID="RHEL-07-040320"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="For systems using DNS resolution, at least two name servers must be configured."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040330 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040330"
+SEVERITY="I"
+GROUP_ID="RHEL-07-040330"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="There must be no .shosts files on the system."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040331 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040331"
+SEVERITY="I"
+GROUP_ID="RHEL-07-040331"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="There must be no shosts.equiv files on the system."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040332 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040332"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040332"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH daemon must not allow authentication using known hosts authentication."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040333 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040333"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040333"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH daemon must not allow authentication using RSA rhosts authentication."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040334 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040334"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040334"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH daemon must not allow authentication using rhosts authentication."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040350 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040350"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040350"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not forward Internet Protocol version 4 (IPv4) source-routed packets."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040351 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040351"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040351"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not forward Internet Protocol version 4 (IPv4) source-routed packets by default."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040380 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040380"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040380"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not respond to Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) echoes sent to a broadcast address."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040410 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040410"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040410"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must ignore to Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040420 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040420"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040420"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not allow interfaces to perform Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirects by default."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040421 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040421"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040421"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not send Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirects."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040470 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040470"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040470"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Network interfaces must not be in promiscuous mode."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040480 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040480"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040480"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must be configured to prevent unrestricted mail relaying."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040490 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040490"
+SEVERITY="I"
+GROUP_ID="RHEL-07-040490"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="A File Transfer Protocol (FTP) server package must not be installed unless needed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040500 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040500"
+SEVERITY="I"
+GROUP_ID="RHEL-07-040500"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The Trivial File Transfer Protocol (TFTP) server package must not be installed if not required for operational support."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040520 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040520"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040520"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="If the Trivial File Transfer Protocol (TFTP) server is required, the TFTP daemon must be configured to operate in secure mode."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040540 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040540"
+SEVERITY="I"
+GROUP_ID="RHEL-07-040540"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="Remote X connections for interactive users must be encrypted."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040560 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040560"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040560"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="An X Windows display manager must not be installed unless approved."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040580 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040580"
+SEVERITY="I"
+GROUP_ID="RHEL-07-040580"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="SNMP community strings must be changed from the default."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040590 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040590"
+SEVERITY="I"
+GROUP_ID="RHEL-07-040590"
+GROUP_TITLE="SRG-OS-000074-GPOS-00042"
+RULE_TITLE="The SSH daemon must be configured to only use the SSHv2 protocol."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040620 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040620"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040620"
+GROUP_TITLE="SRG-OS-000250-GPOS-00093"
+RULE_TITLE="The SSH daemon must be configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040640 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040640"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040640"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH public host key files must have mode 0644 or less permissive."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040650 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040650"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040650"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH private host key files must have mode 0600 or less permissive."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040660 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040660"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040660"
+GROUP_TITLE="SRG-OS-000364-GPOS-00151"
+RULE_TITLE="The SSH daemon must not permit Generic Security Service Application Program Interface (GSSAPI) authentication unless needed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040670 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040670"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040670"
+GROUP_TITLE="SRG-OS-000364-GPOS-00151"
+RULE_TITLE="The SSH daemon must not permit Kerberos authentication unless needed."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040680 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040680"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040680"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH daemon must perform strict mode checking of home directory configuration files."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040690 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040690"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040690"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH daemon must use privilege separation."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040700 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040700"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040700"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The SSH daemon must not allow compression or must only allow compression after successful authentication."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040730 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040730"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040730"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not be performing packet forwarding unless the system is a router."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040740 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040740"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040740"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The Network File System (NFS) must be configured to use AUTH_GSS."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040810 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040810"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040810"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must use a local firewall."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040820 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040820"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040820"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system's access control program must be configured to grant or deny system access to specific hosts and services."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040830 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040830"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040830"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not have unauthorized IP tunnels configured."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
+RHEL_07_040860 ()
+{
+
+# Automated Variables
+RULE_VERSION="RHEL-07-040860"
+SEVERITY="II"
+GROUP_ID="RHEL-07-040860"
+GROUP_TITLE="SRG-OS-000480-GPOS-00227"
+RULE_TITLE="The system must not forward IPv6 source-routed packets."
+
+# Manual Variables
+RULE_TYPE="Automatic, Variable, Policy, Manual"
+
+# Put in Validation Script here
+
+RESULT="Pass, Fail, Not_Applicable, ???"
+
+}
+
