@@ -1,3 +1,7 @@
+# Update
+
+This REPO is being archived.  No updates have been made for several years, and anything new may result in an entirely new repository.  This is being left open in case any of the code is useful to someone in the future.
+
 # STIG_validation
 Secure Technical Implementation Guide (STIG) Validation script for Linux 
 
